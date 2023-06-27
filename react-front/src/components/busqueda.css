@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
+    height: 100vh;
+}
+
+.container-all {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-busqueda {
+    width: 100%;
+    height: 15px;
+}
+
+.title-busqueda {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 10px;
+    background-color: #d9d9d9;
+}
+
+.container-volver{
+    width: 100%;
+    height: 40px;
+    background-color: aqua;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+}
+
+.img-volver{
+    background-image: url(../../../img/atras.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+}
+
+.volver{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
