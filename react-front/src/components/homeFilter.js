@@ -1,10 +1,28 @@
 import './home.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 function HomeFiltros() {
-    const [listExternal, setlistExternal] = useState(false);
 
+    const [filtro, setFiltro] = useState('')
+    const [marca, setMarca] = useState('')
+    const [modelo, setModelo] = useState('')
 
+    const handleChange = (event) => {
+        setFiltro(event.target.value)
+    }
+
+    const handleChange2 = (event) => {
+        setMarca(event.target.value)
+    }
+
+    const handleChange3 = (event) => {
+        setModelo(event.target.value)
+    }
 
     return (
         <div className='container-all'>
@@ -39,43 +57,64 @@ function HomeFiltros() {
                 </div>
                 <div className='selects'>
                     <div className='select-uniques'>
-                        <button className='select-filtro' id='tipofiltro' onClick={() => setlistExternal(!listExternal)}>
-                            Tipo de filtro
-                        </button>
-                        <div className='img'></div>
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">filtros</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={filtro}
+                                label="Tipo de filtros"
+                                onChange={handleChange}
+                            >
+                                <MenuItem value=''>None</MenuItem>
+                                <MenuItem value={10}>Ten</MenuItem>
+                                <MenuItem value={20}>Twenty</MenuItem>
+                                <MenuItem value={30}>Thirty</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
                     <div className='select-uniques'>
-                        <button className='select-filtro'>
-                            Marca vehiculo
-                        </button>
-                        <div className='img'></div>
+                        <FormControl fullWidth>
+                            <InputLabel id="marca-label">Marca</InputLabel>
+                            <Select
+                                labelId="marca-label"
+                                id="marca-select"
+                                value={marca}
+                                label="Marca de vehiculo"
+                                onChange={handleChange2}
+                            >
+                                <MenuItem value=''>None</MenuItem>
+                                <MenuItem value={10}>citroen</MenuItem>
+                                <MenuItem value={20}>ford</MenuItem>
+                                <MenuItem value={30}>mercedes</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
                     <div className='select-uniques'>
-                        <button className='select-filtro'>Modelo vehiculo</button>
-                        <div className='img'></div>
+                        <FormControl fullWidth>
+                            <InputLabel id="marca-label">Modelo</InputLabel>
+                            <Select
+                                labelId="marca-label"
+                                id="marca-select"
+                                value={modelo}
+                                label="Modelo de vehiculo"
+                                onChange={handleChange3}
+                            >
+                                <MenuItem value=''>None</MenuItem>
+                                <MenuItem value={10}>citroen</MenuItem>
+                                <MenuItem value={20}>ford</MenuItem>
+                                <MenuItem value={30}>mercedes</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
                     <div className='button-unique'>
-                        <button className='button' type="">Buscar</button>
+                        <Link to="/busqueda" className='button2'>
+                            <Button variant="contained">Buscar</Button>
+                        </Link>
                     </div>
                 </div>
 
             </section>
-            <div className={listExternal ? "show-element" : null}>
-            {listExternal &&  <div className='listExternal'>
-                    <div className='list'>
-                        <button className='list-exit' onClick={() => setlistExternal(!listExternal)}></button>
-                        <ul>
-                            <li>Filtro </li>
-                            <li>Filtro</li>
-                            <li>Filtro</li>
-                            <li>Filtro</li>
-                            <li>Filtro</li>
-                            <li>Filtro</li>
-                        </ul>
-                    </div>
-                </div>
-}
-            </div>
         </div>
 
     );
