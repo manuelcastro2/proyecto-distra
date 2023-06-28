@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F5F5F5;
     height: 100vh;
 }
 
@@ -16,21 +18,49 @@ body {
 
 .banner {
     width: 100%;
-    height: 200px;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .title {
     width: 100%;
-    height: 7%;
-    text-align: center;
-    font-size: 10px;
-    background-color: #d9d9d9;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(208, 49, 60);
 }
 
+
+.img-logo {
+    width: 175px;
+    height: 65px;
+    background-image: url(../../../img/logoDistraoil2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.img-menu {
+    width: 40px;
+    height: 40px;
+    background-image: url(../../../img/menu.png);
+}
+
+.img-shopping {
+    width: 24px;
+    height: 24px;
+    background-image: url(../../../img/shopping_cart.png);
+}
+
+
 .banner-img {
-    background-color: white;
+    background-color: #F5F5F5;
     width: 100%;
-    height: 100%;
+    height: 226px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -42,9 +72,9 @@ body {
 }
 
 .info {
-    background-color: #d9d9d9;
+    background-color: #EBEBEB;
     width: 100%;
-    height: 150px;
+    height: 140px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -52,33 +82,34 @@ body {
 }
 
 .info-cartel {
-    width: 29%;
-    height: 70%;
-    background-color: white;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    width: 100px;
+    height: 110px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     text-decoration: none;
     color: black;
     justify-content: center;
     align-items: center;
+    border: none;
 }
 
 .info-cartel p {
-    font-size: 8px;
+    font-size: 10px;
     text-transform: uppercase;
 }
 
 .info-cartel h3 {
-    font-size: 15px;
-    font-weight: 300;
+    font-size: 18px;
+    font-weight: 400;
     text-transform: capitalize;
 }
 
 .filtro {
     width: 100%;
-    height: 490px;
-    background-color: white;
+    height: 434px;
+    background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
     justify-content: baseline;
@@ -94,8 +125,9 @@ body {
     width: 80%;
     font-size: 18px;
     font-weight: 300;
-    padding: 25px;
+    padding: 10px 30px;
     text-align: justify;
+    line-height: 40px;
 }
 
 .select-filtro {
@@ -108,43 +140,35 @@ body {
     border: none;
 }
 
-.select-unique {
+.select-auto {
     font-size: 17px;
-    width: 85%;
-    border-radius: 5px;
+    width: 305px;
+    height: 52px;
+    border-radius: 4px;
     outline: none 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.select-uniques {
+.select-modelo {
+    width: 196px;
+    height: 52px;
     font-size: 17px;
-    width: 85%;
-    border-radius: 5px;
+    border-radius: 4px;
     outline: none 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.select-unique2 {
-    width: 53%;
-    font-size: 17px;
-    width: 60%;
-    border-radius: 5px;
-    outline: none 0;
+.select-ano {
+    width: 94px;
+    height: 52px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.select-unique3 {
-    width: 22%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 .selects {
@@ -154,12 +178,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.button-unique {
-    width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 .button {
@@ -174,24 +192,19 @@ body {
 }
 
 .button2 {
+    width: 207px;
+    height: 52px;
     text-decoration: none;
     outline: 0 none;
+    border: none;
     font-size: 17px;
     text-transform: uppercase;
-    background-color: white;
+    border-radius: 8px;
+    background: #4B72FF;
+    color: #FFF;
+    font-size: 18px;
+    line-height: 40px;
 }
-
-.but{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    height: 50px;
-    width: 60%;
-    border-radius: 5px;
-    border:1px solid;
-}
-
 
 .setion1,
 .setion2 {
@@ -212,89 +225,4 @@ body {
     gap: 10px;
 }
 
-.select-aceite {
-    background-color: white;
-    font-size: 17px;
-    outline: none 0;
-    border: none;
-    font-size: 17px;
-    padding: 15px 0px;
-    width: 85%;
-    border-radius: 5px;
-}
 
-.select-ace {
-    background-color: white;
-    font-size: 17px;
-    outline: none 0;
-    font-size: 17px;
-    padding: 15px 0;
-    width: 90%;
-    border-radius: 5px;
-    border: none;
-}
-
-.select-ace2 {
-    font-size: 17px;
-    padding: 15px 0;
-    width: 100%;
-    border-radius: 5px;
-    outline: none 0;
-    border: none;
-    background-color: white;
-}
-
-.img {
-    background-image: url(../../../img/flecha-hacia-abajo-para-navegar.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 10px;
-    height: 10px;
-    position: relative;
-    right: 10px;
-}
-
-.listExternal{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    background-color: rgba(0, 0, 0,0.5);
-    transition: all .4s ease-in-out;
-}
-
-.list{
-    
-width: 100%;
-height: 45%;
-background-color: white;
-position: absolute;
-bottom: 0;
-border-radius: 25px 25px 0px 0;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-
-}
-
-.list ul{
-    margin-top: 30px;
-    width: 80%;
-    height: 80%;
-}
-
-li{
-    list-style: none;
-    text-align: justify;
-    font-size: 25px;
-    height: 50px;
-}
-
-.list-exit{
-    background-color: gray;
-    width: 20%;
-    height: 2px;
-    position: relative;
-    bottom: 5px;
-}
