@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F5F5F5;
     height: 100vh;
 }
 
@@ -16,36 +18,67 @@ body {
 
 .banner-busqueda {
     width: 100%;
-    height: 15px;
+    height: 65px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .title-busqueda {
     width: 100%;
-    height: 100%;
-    text-align: center;
-    font-size: 10px;
-    background-color: #d9d9d9;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(208, 49, 60);
 }
 
-.container-volver{
-    width: 100%;
+
+.img-logo {
+    width: 175px;
+    height: 65px;
+    background-image: url(../../../img/logoDistraoil2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.img-menu {
+    width: 40px;
     height: 40px;
+    background-image: url(../../../img/menu.png);
+}
+
+.img-shopping {
+    width: 24px;
+    height: 24px;
+    background-image: url(../../../img/shopping_cart.png);
+}
+
+.container-volver {
+    width: 65px;
+    height: 24px;
     display: flex;
     justify-content: baseline;
     align-items: center;
+    padding-left: 40px;
+    padding-top: 20px;
 }
 
-.img-volver{
+.img-volver {
     background-image: url(../../../img/atras.png);
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
-.volver{
+.volver {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    color: #2B2B2B;
     text-decoration: none;
-    color: black;
-    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
 }
-

@@ -1,50 +1,55 @@
 import './home.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Autocomplete from '@mui/material/Autocomplete';
+import { styled } from '@mui/material/styles';
+import { indigo } from '@mui/material/colors';
 function Home() {
 
     const grupoImagenes = [];
 
+    const top100Films = [
+        { label: 'The Shawshank Redemption', year: 1994 },
+        { label: 'The Godfather', year: 1972 },
+        { label: 'The Godfather: Part II', year: 1974 },
+        { label: 'The Dark Knight', year: 2008 },
+        { label: '12 Angry Men', year: 1957 },
+        { label: "Schindler's List", year: 1993 },
+        { label: 'Pulp Fiction', year: 1994 },
+      ];
+
+      const ColorButton = styled(Button)(({ theme }) => ({
+        color: theme.palette.getContrastText(indigo[900]),
+        backgroundColor: indigo[900],
+        fontSize:18,
+        '&:hover': {
+          backgroundColor: indigo[800],
+        },
+      }));
+
 
     const [mostrarComponente1, setMostrarComponente1] = useState(true);
-    const [filtro, setFiltro] = useState('')
-    const [marca, setMarca] = useState('')
-    const [modelo, setModelo] = useState('')
-    const [ano, setAno] = useState('')
-
-    const handleChange = (event) => {
-        setFiltro(event.target.value)
-    }
-
-    const handleChange2 = (event) => {
-        setMarca(event.target.value)
-    }
-
-    const handleChange3 = (event) => {
-        setModelo(event.target.value)
-    }
-
-    const handleChange4 = (event) => {
-        setAno(event.target.value)
-    }
 
 
     return (
         <div className='container-all'>
             <div className='banner'>
                 <div className='title'>
-                    <div className='img-menu'>
+                    <Button variant='text'>
+                        <div className='img-menu'>
 
-                    </div>
+                        </div>
+                    </Button>
                     <div className='img-logo'>
                     </div>
-                    <div className='img-shopping'>
+                    <Button variant='text'>
+                        <div className='img-shopping'>
 
-                    </div>
+                        </div>
+                    </Button>
                 </div>
                 <div className='banner-img'>
                     <p>BANNER</p>
@@ -85,57 +90,33 @@ function Home() {
                         <div className='selects'>
                             <div className='select-auto'>
                                 <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label">filtros</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={filtro}
-                                        label="Tipo de filtros"
-                                        onChange={handleChange}
-                                    >
-                                        <MenuItem value=''>None</MenuItem>
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-                                        <MenuItem value={30}>Thirty</MenuItem>
-                                    </Select>
+                                <Autocomplete disablePortal
+                                    id="combo-box-demo"
+                                    options={top100Films}
+                                    renderInput={(params)=><TextField {...params} label="Filtros"/>}
+                                    />
                                 </FormControl>
                             </div>
                             <div className='select-auto'>
                                 <FormControl fullWidth>
-                                    <InputLabel id="marca-label">Marca</InputLabel>
-                                    <Select
-                                        labelId="marca-label"
-                                        id="marca-select"
-                                        value={marca}
-                                        label="Marca de vehiculo"
-                                        onChange={handleChange2}
-                                    >
-                                        <MenuItem value=''>None</MenuItem>
-                                        <MenuItem value={10}>citroen</MenuItem>
-                                        <MenuItem value={20}>ford</MenuItem>
-                                        <MenuItem value={30}>mercedes</MenuItem>
-                                    </Select>
+                                <Autocomplete disablePortal
+                                    id="combo-box-demo"
+                                    options={top100Films}
+                                    renderInput={(params)=><TextField {...params} label="Marca"/>}
+                                    />
                                 </FormControl>
                             </div>
                             <div className='select-auto'>
                                 <FormControl fullWidth>
-                                    <InputLabel id="marca-label">Modelo</InputLabel>
-                                    <Select
-                                        labelId="marca-label"
-                                        id="marca-select"
-                                        value={modelo}
-                                        label="Modelo de vehiculo"
-                                        onChange={handleChange3}
-                                    >
-                                        <MenuItem value=''>None</MenuItem>
-                                        <MenuItem value={10}>citroen</MenuItem>
-                                        <MenuItem value={20}>ford</MenuItem>
-                                        <MenuItem value={30}>mercedes</MenuItem>
-                                    </Select>
+                                <Autocomplete disablePortal
+                                    id="combo-box-demo"
+                                    options={top100Films}
+                                    renderInput={(params)=><TextField {...params} label="Modelo"/>}
+                                    />
                                 </FormControl>
                             </div>
                             <Link to="/busqueda">
-                                <button className='button2'>Buscar</button>
+                                <ColorButton className='button2'>Buscar</ColorButton>
                             </Link>
                         </div>
                     </div>
@@ -150,61 +131,37 @@ function Home() {
                             <div className='setion1'>
                                 <div className='select-auto'>
                                     <FormControl fullWidth>
-                                        <InputLabel id="marca-label">Marca</InputLabel>
-                                        <Select
-                                            labelId="marca-label"
-                                            id="marca-select"
-                                            value={marca}
-                                            label="Marca"
-                                            onChange={handleChange2}
-                                        >
-                                            <MenuItem value=''>None</MenuItem>
-                                            <MenuItem value={10}>citroen</MenuItem>
-                                            <MenuItem value={20}>ford</MenuItem>
-                                            <MenuItem value={30}>mercedes</MenuItem>
-                                        </Select>
+                                    <Autocomplete disablePortal
+                                    id="combo-box-demo"
+                                    options={top100Films}
+                                    renderInput={(params)=><TextField {...params} label="Marca"/>}
+                                    />
                                     </FormControl>
                                 </div>
                             </div>
                             <div className='setion2'>
                                 <div className='select-modelo'>
                                     <FormControl fullWidth>
-                                        <InputLabel id="marca-label">Modelo</InputLabel>
-                                        <Select
-                                            labelId="marca-label"
-                                            id="marca-select"
-                                            value={modelo}
-                                            label="Modelo"
-                                            onChange={handleChange3}
-                                        >
-                                            <MenuItem value=''>None</MenuItem>
-                                            <MenuItem value={10}>pick up</MenuItem>
-                                            <MenuItem value={20}>ranger</MenuItem>
-                                            <MenuItem value={30}>sedan</MenuItem>
-                                        </Select>
+                                    <Autocomplete disablePortal
+                                    id="combo-box-demo"
+                                    options={top100Films}
+                                    renderInput={(params)=><TextField {...params} label="Modelo"/>}
+                                    />
                                     </FormControl>
                                 </div>
                                 <div className='select-ano'>
                                     <FormControl fullWidth>
-                                        <InputLabel id="marca-label">Año</InputLabel>
-                                        <Select
-                                            labelId="marca-label"
-                                            id="marca-select"
-                                            value={ano}
-                                            label="Año"
-                                            onChange={handleChange4}
-                                        >
-                                            <MenuItem value=''>None</MenuItem>
-                                            <MenuItem value={10}>2012</MenuItem>
-                                            <MenuItem value={20}>2002</MenuItem>
-                                            <MenuItem value={30}>2020</MenuItem>
-                                        </Select>
+                                    <Autocomplete disablePortal
+                                    id="combo-box-demo"
+                                    options={top100Films}
+                                    renderInput={(params)=><TextField {...params} label="Año"/>}
+                                    />
                                     </FormControl>
 
                                 </div>
                             </div>
                             <Link to="/busqueda">
-                                <button className='button2 position'>Buscar</button>
+                                <ColorButton variant='contained' className='button2 position'>Buscar</ColorButton>
                             </Link>
                         </div>
                     </div>
