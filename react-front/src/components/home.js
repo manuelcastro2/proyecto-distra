@@ -7,7 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 function Home() {
 
-    const grupoImagenes=[];
+    const grupoImagenes = [];
 
 
     const [mostrarComponente1, setMostrarComponente1] = useState(true);
@@ -204,7 +204,7 @@ function Home() {
                                 </div>
                             </div>
                             <Link to="/busqueda">
-                                <button className='button2'>Buscar</button>
+                                <button className='button2 position'>Buscar</button>
                             </Link>
                         </div>
                     </div>
