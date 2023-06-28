@@ -5,7 +5,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
 function Home() {
 
     const grupoImagenes=[];
@@ -15,7 +14,6 @@ function Home() {
     const [filtro, setFiltro] = useState('')
     const [marca, setMarca] = useState('')
     const [modelo, setModelo] = useState('')
-    const [vehiculo, setVehiculo] = useState('')
     const [ano, setAno] = useState('')
 
     const handleChange = (event) => {
@@ -34,9 +32,6 @@ function Home() {
         setAno(event.target.value)
     }
 
-    const handleChange5 = (event) => {
-        setVehiculo(event.target.value)
-    }
 
     return (
         <div className='container-all'>
@@ -151,25 +146,8 @@ function Home() {
                                 Busca tu aceite
                             </h1>
                         </div>
-                        <div className='selects'>
+                        <div className='selects aceite'>
                             <div className='setion1'>
-                                <div className='select-auto'>
-                                    <FormControl fullWidth>
-                                        <InputLabel id="demo-simple-select-label">Vehiculo</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={vehiculo}
-                                            label="Vehiculo"
-                                            onChange={handleChange5}
-                                        >
-                                            <MenuItem value=''>None</MenuItem>
-                                            <MenuItem value={10}>Ten</MenuItem>
-                                            <MenuItem value={20}>Twenty</MenuItem>
-                                            <MenuItem value={30}>Thirty</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </div>
                                 <div className='select-auto'>
                                     <FormControl fullWidth>
                                         <InputLabel id="marca-label">Marca</InputLabel>

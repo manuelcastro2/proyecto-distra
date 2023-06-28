@@ -78,11 +78,10 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-
 }
 
 .info-cartel {
-    width: 100px;
+    width: 105px;
     height: 110px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -101,7 +100,7 @@ body {
 }
 
 .info-cartel h3 {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
     text-transform: capitalize;
 }
@@ -118,7 +117,7 @@ body {
 
 .filtro-element {
     width: 100%;
-    height: 15%;
+    height: 17%;
 }
 
 .filtro-element h1 {
@@ -128,16 +127,6 @@ body {
     padding: 10px 30px;
     text-align: justify;
     line-height: 40px;
-}
-
-.select-filtro {
-    background-color: white;
-    font-size: 17px;
-    padding: 15px 10px;
-    width: 100%;
-    border-radius: 5px;
-    outline: none 0;
-    border: none;
 }
 
 .select-auto {
@@ -152,7 +141,7 @@ body {
 }
 
 .select-modelo {
-    width: 196px;
+    width: 202px;
     height: 52px;
     font-size: 17px;
     border-radius: 4px;
@@ -172,8 +161,8 @@ body {
 }
 
 .selects {
-    width: 100%;
-    gap: 40px;
+    gap:40px;
+    width: 360px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -208,15 +197,14 @@ body {
 
 .setion1,
 .setion2 {
-    width: 100%;
+    
+    height: 52px;
     display: flex;
 }
 
 .setion1 {
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 90px;
 }
 
 .setion2 {
@@ -225,4 +213,7 @@ body {
     gap: 10px;
 }
 
-
+.aceite{
+    position: relative;
+    top:15.5px;
+}
