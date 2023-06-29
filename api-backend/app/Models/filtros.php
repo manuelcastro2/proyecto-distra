@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class filtros extends Model
 {
     use HasFactory;
+
+    protected $filltable=['filtros','marca','modelo'];
 }

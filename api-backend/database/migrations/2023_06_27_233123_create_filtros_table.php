@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('filtros', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('filtros');
+            $table->string('marca')->unique();
+            $table->string('modelo');
             $table->timestamps();
         });
     }
