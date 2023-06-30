@@ -178,13 +178,13 @@ function Home() {
                                     <InputLabel id="input-select-Marca">Marca</InputLabel>
                                     <Select
                                         labelId="input-select-Marca"
-                                        id="select-small-marca"
+                                        id="select-marca"
                                         label="Marca"
                                         value={mostrarMarca}
                                         onChange={handleChange2}
                                     >
                                         <MenuItem value="">
-                                            None
+                                            Selecione
                                         </MenuItem>
                                         {marca.map((key2) => (
                                             <MenuItem
@@ -207,7 +207,7 @@ function Home() {
                                         onChange={handleChange3}
                                     >
                                         <MenuItem value="">
-                                            None
+                                            Selecione
                                         </MenuItem>
                                         {modelo.map((key3) => (
                                             <MenuItem
