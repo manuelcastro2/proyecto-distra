@@ -11,5 +11,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(FiltrosController::class)->group(function(){
     Route::get('/filtros','filtros');
     Route::get('/marcas','marcas');
+    Route::get('/marcas2','marcas2');
     Route::get('/modelo','modelo');
+    Route::get('/modelo2','modelo2');
 });

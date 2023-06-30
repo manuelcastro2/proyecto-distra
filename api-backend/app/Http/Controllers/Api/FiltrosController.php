@@ -36,6 +36,20 @@ class FiltrosController extends Controller
 
     }
 
+    public function marcas2()
+    {
+        $filtro=DB::select('SELECT DISTINCT marca FROM filtros');
+        return $filtro;
+    }
+
+    public function modelo2(Request $request)
+    {
+        $marca=$request->marca;
+        $modelo=filtros::query()->select('modelo')->where('marca',$marca)->get();
+        return $modelo;
+
+    }
+
     /**
      * Display the specified resource.
      */
