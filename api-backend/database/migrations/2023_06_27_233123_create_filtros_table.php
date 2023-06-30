@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('filtros', function (Blueprint $table) {
             $table->id();
             $table->string('filtros');
-            $table->string('marca')->unique();
-            $table->string('modelo');
+            $table->string('marca');
+            $table->string('modelo')->unique();
             $table->timestamps();
         });
     }
