@@ -27,6 +27,11 @@ function Busqueda() {
                 <div className='img-volver'></div>
                 <Link to='/' className='volver'>Volver</Link>
             </div>
+            <div className='container-title-resultado'>
+                <p className='title-resultado'>Seleccione referencia</p>
+                <p className='resultado'>Aceite Carga Pesada 15w 40</p>
+            </div>
+            <p className='division'></p>
         </div>
     );
 }

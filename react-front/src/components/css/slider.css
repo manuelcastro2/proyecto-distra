@@ -22,3 +22,21 @@
     background-size: cover;
     border: none;
 }
+
+.container-cambioDeimagenes{
+    width: 47px;
+    height: 5px;
+    position: absolute;
+    z-index: 22px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 230px;
+}
+
+.circle{
+    width: 5px;
+    height: 5px;
+    border-radius: 50px;
+    background: white;
+}

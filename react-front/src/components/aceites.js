@@ -11,6 +11,7 @@ import { indigo } from '@mui/material/colors';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios';
+import Colores from './palette'
 
 const Aceites = () => {
     const endpoint = 'http://localhost:8000/api'
@@ -137,7 +138,7 @@ const Aceites = () => {
                     </div>
                 </div>
                 <Link to="/busqueda" className='position'>
-                    <ColorButton variant='contained' className='button2'>Buscar</ColorButton>
+                <Colores></Colores>
                 </Link>
             </div>
         </div>

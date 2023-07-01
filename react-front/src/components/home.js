@@ -28,7 +28,7 @@ function Home() {
                     </Button>
                 </div>
                 <div className='banner-img'>
-                <Slider imagenes={Imagenes}></Slider>
+                    <Slider imagenes={Imagenes}></Slider>
                 </div>
             </div>
             <main className='info'>
@@ -66,6 +66,7 @@ function Home() {
                     </div>
                 )}
             </section>
+
         </div>
 
     );

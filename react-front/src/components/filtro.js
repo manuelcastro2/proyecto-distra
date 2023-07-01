@@ -1,17 +1,12 @@
 import './css/home.css';
-import { Link, json } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Autocomplete from '@mui/material/Autocomplete';
 import Select from '@mui/material/Select';
-import { styled } from '@mui/material/styles';
-import { indigo } from '@mui/material/colors';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios';
-
+import Colores from './palette'
 
 const Filtro = () => {
     const endpoint = 'http://localhost:8000/api'
@@ -77,16 +72,7 @@ const Filtro = () => {
         break;
     }
 
-    const ColorButton = styled(Button)(({ theme }) => ({
-        color: theme.palette.getContrastText(indigo[900]),
-        backgroundColor: indigo[900],
-        fontSize: 18,
-        '&:hover': {
-            backgroundColor: indigo[800],
-        },
-    }));
-
-    return (    
+    return (
         <div>
             <div className='filtro-element'>
                 <h1>
@@ -164,7 +150,7 @@ const Filtro = () => {
                     </FormControl>
                 </div>
                 <Link to="/busqueda">
-                    <ColorButton className='button2'>Buscar</ColorButton>
+                    <Colores></Colores>
                 </Link>
             </div>
         </div>
