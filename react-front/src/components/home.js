@@ -1,11 +1,12 @@
 import './css/home.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-import Slider from './slider';
 import Filtro from './filtro'
 import Aceites from './aceites';
-import Imagenes from './imagenes'
+import SlideComponent from './sliderComponent';
+import Imagenes from './imagenes';
 function Home() {
+
 
 
     const [mostrarComponente1, setMostrarComponente1] = useState(true);
@@ -27,9 +28,9 @@ function Home() {
                         </div>
                     </Button>
                 </div>
-                <div className='banner-img'>
-                    <Slider imagenes={Imagenes}></Slider>
-                </div>
+            </div>
+            <div className='banner-img'>
+            <SlideComponent imagenes={Imagenes}/>
             </div>
             <main className='info'>
                 <div className='info-cartel'>
