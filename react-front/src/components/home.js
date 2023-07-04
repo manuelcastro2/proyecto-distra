@@ -29,9 +29,7 @@ function Home() {
                     </Button>
                 </div>
             </div>
-            <div className='banner-img'>
             <SlideComponent imagenes={Imagenes}/>
-            </div>
             <main className='info'>
                 <div className='info-cartel'>
                     <p>servientrega</p>
