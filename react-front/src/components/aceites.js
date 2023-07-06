@@ -1,17 +1,15 @@
 import './css/home.css';
-import { Link, json } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Autocomplete from '@mui/material/Autocomplete';
 import Select from '@mui/material/Select';
-import { styled } from '@mui/material/styles';
-import { indigo } from '@mui/material/colors';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios';
 import Colores from './palette'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 const Aceites = () => {
     const endpoint = 'http://localhost:8000/api'
@@ -23,13 +21,7 @@ const Aceites = () => {
 
     const [cont2, setCont2] = useState(0);
 
-    const top100Films = [
-        { label: 'A' },
-        { label: 'B' },
-        { label: 'C' },
-        { label: 'D' },
-        { label: 'Otros' },
-    ];
+
 
     useEffect(() => {
         getAllMarcas()
@@ -54,20 +46,11 @@ const Aceites = () => {
         setModelo(response.data)
     }
 
-    while (handleChange2 && cont2 == 0) {
+    while (handleChange2 && cont2 === 0) {
         getAllModelo()
         setCont2(1)
         break;
     }
-
-    const ColorButton = styled(Button)(({ theme }) => ({
-        color: theme.palette.getContrastText(indigo[900]),
-        backgroundColor: indigo[900],
-        fontSize: 18,
-        '&:hover': {
-            backgroundColor: indigo[800],
-        },
-    }));
 
     return (
         <div>
@@ -128,20 +111,17 @@ const Aceites = () => {
                     </div>
                     <div className='select-ano'>
                         <FormControl fullWidth>
-                            <Autocomplete disablePortal
-                                id="combo-box-demo"
-                                options={top100Films}
-                                renderInput={(params) => <TextField {...params} label="Año" />}
-                            />
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DatePicker label={'year'} openTo="year" views={['year']} />
+                            </LocalizationProvider>
                         </FormControl>
-
                     </div>
                 </div>
                 <Link to="/busqueda" className='position'>
-                <Colores></Colores>
+                    <Colores></Colores>
                 </Link>
             </div>
-        </div>
+        </div >
     )
 }
 

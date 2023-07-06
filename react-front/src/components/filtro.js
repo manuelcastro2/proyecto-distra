@@ -15,6 +15,7 @@ const Filtro = () => {
     const [cont2, setCont2] = useState(0);
 
     const [mostrarModelo, setMostrarModelo] = useState('');
+    const [idProduct, setidProduct] = useState('');
     const [filtro, setFiltro] = useState('');
     const [mostrarMarca, setMostrarMarca] = useState('');
 
@@ -60,13 +61,13 @@ const Filtro = () => {
     }
 
 
-    while (handleChange && cont1 == 0) {
+    while (handleChange && cont1 === 0) {
         getAllMarcas()
         setCont1(1)
         break;
     }
 
-    while (handleChange && cont2 == 0) {
+    while (handleChange && cont2 === 0) {
         getAllModelo()
         setCont2(1)
         break;
@@ -141,15 +142,16 @@ const Filtro = () => {
                             </MenuItem>
                             {modelo.map((key3) => (
                                 <MenuItem
+                                    onClick={() => setidProduct(key3.id)}
                                     key={key3.modelo}
                                     value={key3.modelo}
-                                >
-                                    {key3.modelo}</MenuItem>
+                                >{key3.modelo}
+                                </MenuItem>
                             ))}
                         </Select>
                     </FormControl>
                 </div>
-                <Link to="/busqueda">
+                <Link to={`/busqueda/${idProduct}`}>
                     <Colores></Colores>
                 </Link>
             </div>

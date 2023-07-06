@@ -1,4 +1,4 @@
-import React,{useRef,useState} from "react";
+import React from "react";
 import './css/slider.css';
 import {Swiper,SwiperSlide} from 'swiper/react'
 import 'swiper/css'

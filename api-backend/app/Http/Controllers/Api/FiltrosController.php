@@ -21,7 +21,7 @@ class FiltrosController extends Controller
      */
     public function marcas(Request $request)
     {
-        $filtro=$request->filtro;
+        $filtro=$request->input('filtro');
         $marca=filtros::query()->distinct()->select('marca')->where('filtro',$filtro)->get();
         return $marca;
 
@@ -29,23 +29,9 @@ class FiltrosController extends Controller
 
     public function modelo(Request $request)
     {
-        $marca=$request->marca;
-        $filtro=$request->filtro;
-        $modelo=filtros::query()->select('modelo')->where('marca',$marca)->where('filtro',$filtro)->get();
-        return $modelo;
-
-    }
-
-    public function marcas2()
-    {
-        $filtro=DB::select('SELECT DISTINCT marca FROM filtros');
-        return $filtro;
-    }
-
-    public function modelo2(Request $request)
-    {
-        $marca=$request->marca;
-        $modelo=filtros::query()->select('modelo')->where('marca',$marca)->get();
+        $marca=$request->input('marca');
+        $filtro=$request->input('filtro');
+        $modelo=filtros::query()->select('modelo','id')->where('marca',$marca)->where('filtro',$filtro)->get();
         return $modelo;
 
     }
@@ -55,7 +41,8 @@ class FiltrosController extends Controller
      */
     public function show(string $id)
     {
-        //
+     $referencia=DB::select('select distinct filtro,modelo,marca,referencia from filtros,fil_referencias where filtros.id=fil_referencias.id_filtros and  id_filtros = ?', [$id]);
+     return $referencia;
     }
 
     /**

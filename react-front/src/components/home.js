@@ -1,6 +1,6 @@
 import './css/home.css';
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
+import Encabezado from './encabezado';
 import Filtro from './filtro'
 import Aceites from './aceites';
 import SlideComponent from './sliderComponent';
@@ -13,22 +13,7 @@ function Home() {
 
     return (
         <div className='container-all'>
-            <div className='banner'>
-                <div className='title'>
-                    <Button variant='text'>
-                        <div className='img-menu'>
-
-                        </div>
-                    </Button>
-                    <div className='img-logo'>
-                    </div>
-                    <Button variant='text'>
-                        <div className='img-shopping'>
-
-                        </div>
-                    </Button>
-                </div>
-            </div>
+            <Encabezado/>
             <SlideComponent imagenes={Imagenes}/>
             <main className='info'>
                 <div className='info-cartel'>

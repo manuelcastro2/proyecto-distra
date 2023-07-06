@@ -1,8 +1,7 @@
-import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+const pallete = ({modelo}) => {
 
-const pallete = () => {
   const  theme = createTheme({
         palette: {
             secondary: {
