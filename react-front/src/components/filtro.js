@@ -1,47 +1,55 @@
 import './css/home.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios';
 import Colores from './palette'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { List, Typography, ListItemButton, ListItem, Button, FormControl, Modal, InputBase, IconButton } from '@mui/material';
+import { Input } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import { styled, alpha } from '@mui/material/styles';
 
 const Filtro = () => {
     const endpoint = 'http://localhost:8000/api'
 
+    const [mostrarComponente, setMostrarComponente] = useState(false);
+    const [buscar, setBusqueda] = useState('');
+
     const [cont1, setCont1] = useState(0);
     const [cont2, setCont2] = useState(0);
 
-    const [mostrarModelo, setMostrarModelo] = useState('');
-    const [idProduct, setidProduct] = useState('');
-    const [filtro, setFiltro] = useState('');
-    const [mostrarMarca, setMostrarMarca] = useState('');
+    const [mostrarModelo, setMostrarModelo] = useState('modelo');
+    const [idProduct, setidProduct] = useState();
+    const [filtro, setFiltro] = useState('filtro');
+    const [mostrarMarca, setMostrarMarca] = useState('marca');
 
     const [products, setProducts] = useState([])
     const [marca, setMarcas] = useState([])
     const [modelo, setModelo] = useState([])
 
+    const [openFiltro, setOpenFiltro] = useState(false);
+    const handleOpenFiltro = () => setOpenFiltro(true);
+    const handleCloseFiltro = () => setOpenFiltro(false);
+
+    const [openMarca, setOpenMarca] = useState(false);
+    const handleOpenMarca = () => setOpenMarca(true);
+    const handleCloseMarca = () => {
+        setOpenMarca(false)
+        setMostrarComponente(false)
+    };
+
+    const [openModelo, setOpenModelo] = useState(false);
+    const handleOpenModelo = () => setOpenModelo(true);
+    const handleCloseModelo = () => {
+        setOpenModelo(false)
+        setMostrarComponente(false)
+    };
+
     useEffect(() => {
         getAllFiltros()
     }, [])
 
-    const handleChange = (event) => {
-        setFiltro(event.target.value);
-        setCont1(0)
-        setCont2(0)
-    };
-
-    const handleChange2 = (event) => {
-        setMostrarMarca(event.target.value)
-        setCont2(0)
-        setMostrarModelo('Selecione')
-    };
-
-    const handleChange3 = (event) => {
-        setMostrarModelo(event.target.value)
-    };
 
     const getAllFiltros = async () => {
         const response = await axios.get(`${endpoint}/filtros`)
@@ -61,17 +69,40 @@ const Filtro = () => {
     }
 
 
-    while (handleChange && cont1 === 0) {
+    while (cont1 === 0) {
         getAllMarcas()
+        setMostrarModelo('modelo')
+        setMostrarMarca('marca')
         setCont1(1)
         break;
     }
 
-    while (handleChange && cont2 === 0) {
+    while (cont2 === 0) {
         getAllModelo()
+        setMostrarModelo('modelo')
         setCont2(1)
         break;
     }
+
+    const Search = styled('div')(({ theme }) => ({
+        position: 'static',
+        borderRadius: theme.shape.borderRadius,
+        background: 'white',
+        marginLeft: 0,
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+    }));
+
+    const StyledInputBase = styled(InputBase)(({ theme }) => ({
+        color: 'inherit',
+        width: '100%',
+        height: '100%',
+        fontSize: '20px',
+        fontWeight: 400,
+    }));
+ 
 
     return (
         <div>
@@ -83,77 +114,307 @@ const Filtro = () => {
             <div className='selects'>
                 <div className='select-auto'>
                     <FormControl fullWidth>
-                        <InputLabel id="input-select-Filtro">Filtro</InputLabel>
-                        <Select
-                            labelId="input-select-Filtro"
-                            id="filtro-select-small"
-                            label="filtro"
-                            value={filtro}
-                            onChange={handleChange}
-                        >
-                            <MenuItem value="">
-                                Selecione
-                            </MenuItem>
-                            {products.map((key1) => (
-                                <MenuItem
-                                    key={key1.filtro}
-                                    value={key1.filtro}
-                                >
-                                    {key1.filtro}</MenuItem>
-                            ))}
-                        </Select>
+                        <Button
+                            variant='outlined'
+                            sx={{
+                                border: 1,
+                                p: 1.5,
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                borderColor: "#6B778C",
+                                color: '#111',
+                                backgroundColor: '#F5F5F5'
+                            }}
+                            onClick={handleOpenFiltro}>
+                            <div className='text'>{filtro}</div>
+                            <ArrowDropDownIcon />
+                        </Button>
                     </FormControl>
+                    <Modal
+                        open={openFiltro}
+                        onClose={handleCloseFiltro}
+                    >
+                        <div className='modal-total'>
+                            <div className='cartel'>
+                                <Button onClick={handleCloseFiltro} sx={{ m: 0 }} >
+                                    <ArrowBackIosIcon fontSize='medium' sx={{ color: 'white' }} />
+                                </Button>
+                                <h1>Filtros</h1>
+                            </div>
+                            <div className='modal'>
+                                <div className='center'>
+                                    <div className='button-modal'>
+                                        <Button fullWidth onClick={() => {
+                                            handleCloseFiltro()
+                                        }}
+                                            sx={{ background: '#A6A5A5', pt: 0.3, pb: 0.3, mb: 3, mt: 1.5 }}>
+                                        </Button>
+                                    </div>
+                                </div>
+                                <List sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', overflow: 'auto', width: '100%' }}>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        <ListItemButton
+                                            sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                            onClick={() => {
+                                                setFiltro('filtro')
+                                                setCont1(0)
+                                                setCont2(0)
+                                                handleCloseFiltro()
+
+                                            }
+                                            }
+                                        >
+                                            <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                Seleccione
+                                            </Typography>
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        {products.map((item) => (
+                                            <ListItemButton sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                                onClick={() => {
+                                                    setFiltro(item.filtro)
+                                                    setCont1(0)
+                                                    setCont2(0)
+                                                    handleCloseFiltro()
+                                                }
+                                                }
+                                                key={item.filtro}
+                                            >
+                                                <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                    {item.filtro}
+                                                </Typography>
+                                            </ListItemButton>
+                                        ))
+                                        }
+                                    </ListItem>
+                                </List>
+                            </div>
+                        </div>
+                    </Modal>
                 </div>
                 <div className='select-auto'>
                     <FormControl fullWidth>
-                        <InputLabel id="input-select-Marca">Marca</InputLabel>
-                        <Select
-                            labelId="input-select-Marca"
-                            id="select-marca"
-                            label="Marca"
-                            value={mostrarMarca}
-                            onChange={handleChange2}
-                        >
-                            <MenuItem value="">
-                                Selecione
-                            </MenuItem>
-                            {marca.map((key2) => (
-                                <MenuItem
-                                    key={key2.marca}
-                                    value={key2.marca}
-                                >
-                                    {key2.marca}</MenuItem>
-                            ))}
-                        </Select>
+                        <Button
+                            variant='outlined'
+                            sx={{
+                                border: 1,
+                                p: 1.5,
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                borderColor: "#6B778C",
+                                color: '#111',
+                                backgroundColor: '#F5F5F5'
+                            }}
+                            onClick={handleOpenMarca}>
+                            <div className='text'>{mostrarMarca}</div>
+                            <ArrowDropDownIcon />
+                        </Button>
                     </FormControl>
+                    <Modal
+                        open={openMarca}
+                        onClose={handleCloseMarca}
+
+                    >
+                        <div>
+                            <div className='cartel'>
+                                <Button onClick={() =>
+                                    handleCloseMarca()
+                                }
+                                    sx={{ m: 0 }} >
+                                    <ArrowBackIosIcon fontSize='medium' sx={{ color: 'white' }} />
+                                </Button>
+                                <h1>Filtros</h1>
+                                {mostrarComponente ? (
+                                    <div className='busqueda'>
+                                        <Search >
+                                            <Button onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
+                                                <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
+                                            </Button>
+                                            <StyledInputBase
+
+
+                                                placeholder='Buscar en distraoil'
+                                            />
+                                        </Search>
+                                    </div>
+                                ) : (
+                                    <div className='button-buscar'>
+                                        <IconButton sx={{ mr: 1 }} onClick={() => setMostrarComponente(!mostrarComponente)}>
+                                            <SearchIcon fontSize='large' sx={{ color: 'white' }} />
+                                        </IconButton>
+                                    </div>
+                                )}
+
+                            </div>
+                            <div className='modal2'>
+                                <div className='center'>
+                                    <div className='button-modal'>
+                                        <Button fullWidth onClick={handleCloseMarca} sx={{ background: '#A6A5A5', pt: 0.3, pb: 0.3, mb: 3, mt: 1.5 }}>
+                                        </Button>
+                                    </div>
+                                </div>
+                                <List sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', overflow: 'auto', width: '100%' }}>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        <ListItemButton
+                                            sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                            onClick={() => {
+                                                setMostrarMarca('marca')
+                                                setCont1(0)
+                                                setCont2(0)
+                                                handleCloseMarca()
+                                            }
+                                            }
+                                        >
+                                            <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                Seleccione
+                                            </Typography>
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        {marca.map((marcas, i) => (
+                                            <ListItemButton sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                                onClick={() => {
+                                                    setMostrarMarca(marcas.marca)
+                                                    setCont2(0)
+                                                    handleCloseMarca()
+                                                }
+                                                }
+                                                key={marcas.marca}>
+                                                <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                    {marcas.marca}
+                                                </Typography>
+                                            </ListItemButton>
+                                        ))
+                                        }
+                                    </ListItem>
+                                </List>
+                            </div>
+                        </div>
+                    </Modal>
                 </div>
                 <div className='select-auto'>
                     <FormControl fullWidth>
-                        <InputLabel id="input-select-Modelo">Modelo</InputLabel>
-                        <Select
-                            labelId="input-select-Modelo"
-                            id="select-modelo"
-                            label="Modelo"
-                            value={mostrarModelo}
-                            onChange={handleChange3}
-                        >
-                            <MenuItem value="">
-                                Selecione
-                            </MenuItem>
-                            {modelo.map((key3) => (
-                                <MenuItem
-                                    onClick={() => setidProduct(key3.id)}
-                                    key={key3.modelo}
-                                    value={key3.modelo}
-                                >{key3.modelo}
-                                </MenuItem>
-                            ))}
-                        </Select>
+                        <Button
+                            variant='outlined'
+                            sx={{
+                                border: 1,
+                                p: 1.5,
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                borderColor: "#6B778C",
+                                color: '#111',
+                                backgroundColor: '#F5F5F5'
+                            }}
+                            onClick={handleOpenModelo}>
+                            <div className='text'>{mostrarModelo}</div>
+                            <ArrowDropDownIcon />
+                        </Button>
                     </FormControl>
+                    <Modal
+                        open={openModelo}
+                        onClose={handleCloseModelo}
+
+                    >
+                        <div>
+                            <div className='cartel'>
+                                <Button onClick={handleCloseModelo} sx={{ m: 0 }} >
+                                    <ArrowBackIosIcon fontSize='medium' sx={{ color: 'white' }} />
+                                </Button>
+                                <h1>Filtros</h1>
+                                {mostrarComponente ? (
+                                    <div className='busqueda'>
+                                        <Search>
+                                            <Button onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
+                                                <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
+                                            </Button>
+                                            <StyledInputBase
+                                                placeholder='Buscar en distraoil'
+                                            />
+                                        </Search>
+                                    </div>
+                                ) : (
+                                    <div className='button-buscar'>
+                                        <IconButton sx={{ mr: 1 }} onClick={() => setMostrarComponente(!mostrarComponente)}>
+                                            <SearchIcon fontSize='large' sx={{ color: 'white' }} />
+                                        </IconButton>
+                                    </div>
+                                )}
+
+                            </div>
+                            <div className='modal2'>
+                                <div className='center'>
+                                    <div className='button-modal'>
+                                        <Button fullWidth onClick={handleCloseModelo} sx={{ background: '#A6A5A5', pt: 0.3, pb: 0.3, mb: 3, mt: 1.5 }}>
+                                        </Button>
+                                    </div>
+                                </div>
+                                <List sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', overflow: 'auto', width: '100%' }}>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        <ListItemButton
+                                            sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                            onClick={() => {
+                                                setMostrarModelo('modelo')
+                                                handleCloseModelo()
+                                            }
+                                            }
+                                        >
+                                            <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                Seleccione
+                                            </Typography>
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        {modelo.map((modelo, i) => (
+                                            <ListItemButton sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                                onClick={() => {
+                                                    setMostrarModelo(modelo.modelo)
+                                                    setidProduct(modelo.id)
+                                                    setCont2(0)
+                                                    handleCloseModelo()
+                                                }
+                                                }
+                                                key={modelo.modelo}>
+                                                <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                    {modelo.modelo}
+                                                </Typography>
+                                            </ListItemButton>
+                                        ))
+                                        }
+                                    </ListItem>
+                                </List>
+                            </div>
+                        </div>
+                    </Modal>
                 </div>
                 <Link to={`/busqueda/${idProduct}`}>
                     <Colores></Colores>
                 </Link>
+                <Input autoComplete=''></Input>
             </div>
         </div>
     )

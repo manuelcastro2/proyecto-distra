@@ -37,9 +37,7 @@ const Encabezado = (props) => {
         },
     });
 
-    const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const navItems = ['Home', 'About', 'Contact'];
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
@@ -196,7 +194,7 @@ const Encabezado = (props) => {
             <AppBar position="static" color="secondary" className="banner">
                 <Toolbar >
                     <IconButton edge="start"
-                        sx={{ display: { xs: '-ms-flexbox', mb: 'flex' }, mr: 8 }}
+                        sx={{ display: { xs: '-ms-flexbox', mb: 'flex' }, mr: 5 }}
                         color="inherit"
                         size="large"
                         aria-label="menu"
@@ -218,6 +216,7 @@ const Encabezado = (props) => {
                 <SwipeableDrawer
                     variant="temporary"
                     open={mobileOpen}
+                    onOpen={handleDrawerToggle}
                     onClose={handleDrawerToggle}
                     ModalProps={{
                         keepMounted: true,

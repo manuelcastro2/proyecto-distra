@@ -1,40 +1,36 @@
 import './css/home.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios';
 import Colores from './palette'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Button, Typography, ListItem, ListItemButton, Modal, FormControl, List } from '@mui/material';
 
 const Aceites = () => {
     const endpoint = 'http://localhost:8000/api'
-    const [mostrarModelo, setMostrarModelo] = useState('');
-    const [mostrarMarca, setMostrarMarca] = useState('');
+    const [mostrarModelo, setMostrarModelo] = useState('modelo');
+    const [mostrarMarca, setMostrarMarca] = useState('marca');
 
     const [marca, setMarcas] = useState([])
     const [modelo, setModelo] = useState([])
 
     const [cont2, setCont2] = useState(0);
 
+    const [openMarca, setOpenMarca] = useState(false);
+    const handleOpenMarca = () => setOpenMarca(true);
+    const handleCloseMarca = () => setOpenMarca(false);
 
+    const [openModelo, setOpenModelo] = useState(false);
+    const handleOpenModelo = () => setOpenModelo(true);
+    const handleCloseModelo = () => setOpenModelo(false);
 
     useEffect(() => {
         getAllMarcas()
     }, [])
 
-    const handleChange2 = (event) => {
-        setMostrarMarca(event.target.value)
-        setCont2(0)
-    };
-
-    const handleChange3 = (event) => {
-        setMostrarModelo(event.target.value)
-    };
 
     const getAllMarcas = async () => {
         const response = await axios.get(`${endpoint}/marcas2`)
@@ -46,8 +42,9 @@ const Aceites = () => {
         setModelo(response.data)
     }
 
-    while (handleChange2 && cont2 === 0) {
+    while (cont2 === 0) {
         getAllModelo()
+        setMostrarModelo('modelo')
         setCont2(1)
         break;
     }
@@ -63,56 +60,158 @@ const Aceites = () => {
                 <div className='setion1'>
                     <div className='select-auto'>
                         <FormControl fullWidth>
-                            <InputLabel id="input-select-Marca">Marca</InputLabel>
-                            <Select
-                                labelId="input-select-Marca"
-                                id="select-marca"
-                                label="Marca"
-                                value={mostrarMarca}
-                                onChange={handleChange2}
-                            >
-                                <MenuItem value="">
-                                    Selecione
-                                </MenuItem>
-                                {marca.map((key2) => (
-                                    <MenuItem
-                                        key={key2.marca}
-                                        value={key2.marca}
-                                    >
-                                        {key2.marca}</MenuItem>
-                                ))}
-                            </Select>
+                            <Button
+                                variant='outlined'
+                                sx={{
+                                    border: 1,
+                                    p: 1.5,
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    borderColor: "#6B778C",
+                                    color: '#111',
+                                    backgroundColor: '#F5F5F5'
+                                }}
+                                onClick={handleOpenMarca}>
+                                <div className='text'>{mostrarMarca}</div>
+                                <ArrowDropDownIcon />
+                            </Button>
                         </FormControl>
+                        <Modal
+                            open={openMarca}
+                            onClose={handleCloseMarca}
+
+                        >
+                            <div className='modal2'>
+                                <div className='center'>
+                                    <div className='button-modal'>
+                                        <Button fullWidth onClick={handleCloseMarca} sx={{ background: '#A6A5A5', pt: 0.3, pb: 0.3, mb: 3, mt: 1.5 }}>
+                                        </Button>
+                                    </div>
+                                </div>
+                                <List sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', overflow: 'auto', width: '100%' }}>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        <ListItemButton
+                                            sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                            onClick={() => {
+                                                setMostrarMarca('marca')
+                                                setCont2(0)
+                                                handleCloseMarca()
+                                            }
+                                            }
+                                        >
+                                            <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                Seleccione
+                                            </Typography>
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        {marca.map((marcas, i) => (
+                                            <ListItemButton sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                                onClick={() => {
+                                                    setMostrarMarca(marcas.marca)
+                                                    setCont2(0)
+                                                    handleCloseMarca()
+                                                }
+                                                }
+                                                key={marcas.marca}>
+                                                <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                    {marcas.marca}
+                                                </Typography>
+                                            </ListItemButton>
+                                        ))
+                                        }
+                                    </ListItem>
+                                </List>
+                            </div>
+                        </Modal>
                     </div>
                 </div>
                 <div className='setion2'>
                     <div className='select-modelo'>
                         <FormControl fullWidth>
-                            <InputLabel id="input-select-Modelo">Modelo</InputLabel>
-                            <Select
-                                labelId="input-select-Modelo"
-                                id="select-modelo"
-                                label="Modelo"
-                                value={mostrarModelo}
-                                onChange={handleChange3}
-                            >
-                                <MenuItem value="">
-                                    Selecione
-                                </MenuItem>
-                                {modelo.map((key3) => (
-                                    <MenuItem
-                                        key={key3.modelo}
-                                        value={key3.modelo}
-                                    >
-                                        {key3.modelo}</MenuItem>
-                                ))}
-                            </Select>
+                            <Button
+                                variant='outlined'
+                                sx={{
+                                    border: 1,
+                                    p: 1.5,
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    borderColor: "#6B778C",
+                                    color: '#111',
+                                    backgroundColor: '#F5F5F5'
+                                }}
+                                onClick={handleOpenModelo}>
+                                <div className='text'>{mostrarModelo}</div>
+                                <ArrowDropDownIcon />
+                            </Button>
                         </FormControl>
+                        <Modal
+                            open={openModelo}
+                            onClose={handleCloseModelo}
+
+                        >
+                            <div className='modal2'>
+                                <div className='center'>
+                                    <div className='button-modal'>
+                                        <Button fullWidth onClick={handleCloseModelo} sx={{ background: '#A6A5A5', pt: 0.3, pb: 0.3, mb: 3, mt: 1.5 }}>
+                                        </Button>
+                                    </div>
+                                </div>
+                                <List sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', overflow: 'auto', width: '100%' }}>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        <ListItemButton
+                                            sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                            onClick={() => {
+                                                setMostrarModelo('modelo')
+                                                handleCloseModelo()
+                                            }
+                                            }
+                                        >
+                                            <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                Seleccione
+                                            </Typography>
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        {modelo.map((modelo, i) => (
+                                            <ListItemButton sx={{
+                                                textAlign: 'center',
+                                                width: '75%',
+                                                pl: 5,
+                                            }}
+                                                onClick={() => {
+                                                    setMostrarModelo(modelo.modelo)
+                                                    handleCloseModelo()
+                                                }
+                                                }
+                                                key={modelo.modelo}>
+                                                <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
+                                                    {modelo.modelo}
+                                                </Typography>
+                                            </ListItemButton>
+                                        ))
+                                        }
+                                    </ListItem>
+                                </List>
+                            </div>
+                        </Modal>
                     </div>
                     <div className='select-ano'>
                         <FormControl fullWidth>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DatePicker label={'year'} openTo="year" views={['year']} />
+                                <DatePicker label={'year'} openTo="year" views={['year']} sx={{border:'#6B778C'}} />
                             </LocalizationProvider>
                         </FormControl>
                     </div>
