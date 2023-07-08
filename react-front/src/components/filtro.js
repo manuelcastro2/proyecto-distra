@@ -68,6 +68,11 @@ const Filtro = () => {
         setModelo(response.data)
     }
 
+    const SearchMarca= async () => {
+        const response = await axios.get(`${endpoint}/BusquedaMarca`, { params: { marca: buscar } })
+        setMarcas(response.data)
+    }
+
 
     while (cont1 === 0) {
         getAllMarcas()
@@ -83,26 +88,6 @@ const Filtro = () => {
         setCont2(1)
         break;
     }
-
-    const Search = styled('div')(({ theme }) => ({
-        position: 'static',
-        borderRadius: theme.shape.borderRadius,
-        background: 'white',
-        marginLeft: 0,
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-    }));
-
-    const StyledInputBase = styled(InputBase)(({ theme }) => ({
-        color: 'inherit',
-        width: '100%',
-        height: '100%',
-        fontSize: '20px',
-        fontWeight: 400,
-    }));
- 
 
     return (
         <div>
@@ -235,16 +220,16 @@ const Filtro = () => {
                                 <h1>Filtros</h1>
                                 {mostrarComponente ? (
                                     <div className='busqueda'>
-                                        <Search >
                                             <Button onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
                                                 <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
                                             </Button>
-                                            <StyledInputBase
-
-
+                                            <input type='text' className='input'
+                                            onChange={(e) => setBusqueda(e.target.value)}
                                                 placeholder='Buscar en distraoil'
                                             />
-                                        </Search>
+                                            <IconButton sx={{ mr: 1 }} onClick={()=>SearchMarca()}>
+                                                <SearchIcon fontSize='large' sx={{ color: '#000' }} />
+                                            </IconButton>
                                     </div>
                                 ) : (
                                     <div className='button-buscar'>
@@ -340,14 +325,16 @@ const Filtro = () => {
                                 <h1>Filtros</h1>
                                 {mostrarComponente ? (
                                     <div className='busqueda'>
-                                        <Search>
-                                            <Button onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
+                                            <IconButton onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
                                                 <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
-                                            </Button>
-                                            <StyledInputBase
+                                            </IconButton>
+                                            <input type='text'
                                                 placeholder='Buscar en distraoil'
                                             />
-                                        </Search>
+                                            <IconButton sx={{ mr: 1 }}>
+                                                <SearchIcon fontSize='large' sx={{ color: '#000' }} />
+                                            </IconButton>
+
                                     </div>
                                 ) : (
                                     <div className='button-buscar'>

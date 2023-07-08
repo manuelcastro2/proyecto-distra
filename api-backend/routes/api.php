@@ -14,6 +14,7 @@ Route::controller(FiltrosController::class)->group(function(){
     Route::get('/marcas','marcas');
     Route::get('/modelo','modelo');
     Route::get('/referencia/{id}','show');
+    Route::get('/BusquedaMarca','busquedaMarcas');
 });
 
 Route::controller(AceitesController::class)->group(function(){
