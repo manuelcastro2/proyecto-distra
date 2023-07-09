@@ -204,6 +204,7 @@ const Filtro = () => {
                                                     setCont1(0)
                                                     setCont2(0)
                                                     handleCloseFiltro()
+                                                   
                                                 }
                                                 }
                                                 key={i}
@@ -431,7 +432,7 @@ const Filtro = () => {
                         </div>
                     </Modal>
                 </div>
-                <Link to={`/busqueda/${idProduct}/${idMarca}/${idModelo}`}>
+                <Link to={`/busqueda/${idProduct}/${idMarca}/${idModelo}/${filtro}`}>
                     <Colores></Colores>
                 </Link>
                 <Input autoComplete=''></Input>

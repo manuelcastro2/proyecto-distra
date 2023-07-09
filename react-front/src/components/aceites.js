@@ -21,6 +21,7 @@ const Aceites = () => {
 
     const [mostrarComponente, setMostrarComponente] = useState(false);
     const [idProduct, setidProduct] = useState();
+    const [tipo, setTipo]= useState('Aceites');
 
     const [marca, setMarcas] = useState([])
     const [modelo, setModelo] = useState([])
@@ -291,7 +292,6 @@ const Aceites = () => {
                                                     onClick={() => {
                                                         setMostrarModelo(modelo.modelo)
                                                         setidProduct(modelo.id)
-                                                        setCont2(0)
                                                         handleCloseModelo()
                                                     }
                                                     }
@@ -316,7 +316,7 @@ const Aceites = () => {
                         </FormControl>
                     </div>
                 </div>
-                <Link to={`/busqueda/${idProduct}`} className='position'>
+                <Link to={`/busqueda/${idProduct}/${mostrarMarca}/${mostrarModelo}/${tipo}`} className='position'>
                     <Colores></Colores>
                 </Link>
             </div>

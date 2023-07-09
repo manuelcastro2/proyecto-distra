@@ -7,22 +7,13 @@ import Encabezado from "./encabezado";
 function Busqueda() {
     const endpoint1 = 'http://localhost:8000/api/referencia/'
     const endpoint2 = 'http://localhost:8000/api/referencia2/'
-    const { id,marcas,modelos} = useParams();
+    const { id,marcas,modelos,tipo} = useParams();
     const [referen, setReferencia] = useState([]);
-    const [filtro, setfiltro] = useState('');
-    const [modelo, setmodelo] = useState('');
-    const [marca, setmarca] = useState('');
-    console.log('====================================');
-    console.log(id,marcas,modelos);
-    console.log('====================================');
     useEffect(() => {
-        if(id != undefined && marcas != undefined && modelos != undefined){
+        if(id != undefined && marcas != undefined && modelos != undefined && tipo!='Aceites'){
         const getReferencebyForeignId = async () => {
             const response = await axios.get(`${endpoint1}${id}/${marcas}/${modelos}`);
             setReferencia(response.data);
-            setfiltro(response.data.filtro);
-            setmodelo(response.data.modelo);
-            setmarca(response.data.marca);
         }
         getReferencebyForeignId();
     }else{
@@ -30,8 +21,6 @@ function Busqueda() {
         const getReference2byForeignId = async () => {
             const response = await axios.get(`${endpoint2}${id}`);
             setReferencia(response.data);
-            setmodelo(response.data.modelo);
-            setmarca(response.data.marca);
         }
         getReference2byForeignId(); 
     }
@@ -45,7 +34,7 @@ function Busqueda() {
             </div>
             <div className='container-title-resultado'>
                 <p className='title-resultado'>Seleccione referencia</p>
-                <p className='resultado'>{filtro + " " + marca + " " + modelo}</p>
+                <p className='resultado'>{tipo + " " + marcas + " " + modelos}</p>
             </div>
             <p className='division'></p>
             <div>
