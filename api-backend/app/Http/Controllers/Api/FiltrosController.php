@@ -40,23 +40,11 @@ class FiltrosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id,string $marca,string $modelo)
     {
-        $referencia = DB::select('select distinct filtro,modelo,marca,referencia from filtros,fil_referencias where filtros.id=fil_referencias.id_filtros and  id_filtros = ?', [$id]);
+        $referencia = DB::select('select distinct filtro,modelo,marca,referencia from filtros,fil_referencias where filtros.id=fil_referencias.id_filtros and  id_filtros = ?', [$id],'and marca=?', [$marca],'and modelo = ?', [$modelo]);
         return $referencia;
     }
-
-    public function busquedaMarcas(Request $request)
-    {
-        $marcas = $request->input('marca');
-        $marca = filtros::query()->distinct()->select('marca')->where('marca', $marcas)->get();
-        return $marca;
-
-    }
-
-
-
-
 
     public function update(Request $request, string $id)
     {

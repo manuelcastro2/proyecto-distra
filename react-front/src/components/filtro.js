@@ -5,22 +5,27 @@ import axios from 'axios';
 import Colores from './palette'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { List, Typography, ListItemButton, ListItem, Button, FormControl, Modal, InputBase, IconButton } from '@mui/material';
+import { List, Typography, ListItemButton, ListItem, Button, FormControl, Modal, IconButton } from '@mui/material';
 import { Input } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
+
 
 const Filtro = () => {
     const endpoint = 'http://localhost:8000/api'
 
     const [mostrarComponente, setMostrarComponente] = useState(false);
-    const [buscar, setBusqueda] = useState('');
+    const [buscarMarcas, setBusquedaMarcas] = useState('');
+    const [buscarModelos, setBusquedaModelos] = useState('');
 
     const [cont1, setCont1] = useState(0);
     const [cont2, setCont2] = useState(0);
 
+
     const [mostrarModelo, setMostrarModelo] = useState('modelo');
     const [idProduct, setidProduct] = useState();
+    const [idMarca, setidMarca] = useState();
+    const [idModelo, setidModelo] = useState();
     const [filtro, setFiltro] = useState('filtro');
     const [mostrarMarca, setMostrarMarca] = useState('marca');
 
@@ -37,6 +42,7 @@ const Filtro = () => {
     const handleCloseMarca = () => {
         setOpenMarca(false)
         setMostrarComponente(false)
+        getAllMarcas()
     };
 
     const [openModelo, setOpenModelo] = useState(false);
@@ -44,6 +50,7 @@ const Filtro = () => {
     const handleCloseModelo = () => {
         setOpenModelo(false)
         setMostrarComponente(false)
+        getAllModelo()
     };
 
     useEffect(() => {
@@ -68,11 +75,6 @@ const Filtro = () => {
         setModelo(response.data)
     }
 
-    const SearchMarca= async () => {
-        const response = await axios.get(`${endpoint}/BusquedaMarca`, { params: { marca: buscar } })
-        setMarcas(response.data)
-    }
-
 
     while (cont1 === 0) {
         getAllMarcas()
@@ -88,6 +90,38 @@ const Filtro = () => {
         setCont2(1)
         break;
     }
+
+    const B = marca.map(
+        (item) => item.marca
+    )
+
+    const C = modelo.map(
+        (item) => item.modelo
+    )
+
+    const busquedaMarcas = () => {
+        B.map((marcas) => {
+            if (marcas == buscarMarcas) {
+                setMarcas(Array.isArray(marcas) ? marcas : [{ marca: buscarMarcas }])
+            } else if ('' == buscarMarcas) {
+                getAllMarcas()
+            }
+        }
+        )
+    }
+
+    const busquedaModelo = () => {
+        C.map((modelos) => {
+            if (modelos == buscarModelos) {
+                setModelo(Array.isArray(modelos) ? modelos : [{ modelo: buscarModelos }])
+            } else if ('' == buscarModelos) {
+                getAllModelo()
+            }
+        }
+        )
+    }
+
+
 
     return (
         <div>
@@ -159,7 +193,7 @@ const Filtro = () => {
                                         </ListItemButton>
                                     </ListItem>
                                     <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                        {products.map((item) => (
+                                        {products.map((item, i) => (
                                             <ListItemButton sx={{
                                                 textAlign: 'center',
                                                 width: '75%',
@@ -172,7 +206,7 @@ const Filtro = () => {
                                                     handleCloseFiltro()
                                                 }
                                                 }
-                                                key={item.filtro}
+                                                key={i}
                                             >
                                                 <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
                                                     {item.filtro}
@@ -220,16 +254,16 @@ const Filtro = () => {
                                 <h1>Filtros</h1>
                                 {mostrarComponente ? (
                                     <div className='busqueda'>
-                                            <Button onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
-                                                <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
-                                            </Button>
-                                            <input type='text' className='input'
-                                            onChange={(e) => setBusqueda(e.target.value)}
-                                                placeholder='Buscar en distraoil'
-                                            />
-                                            <IconButton sx={{ mr: 1 }} onClick={()=>SearchMarca()}>
-                                                <SearchIcon fontSize='large' sx={{ color: '#000' }} />
-                                            </IconButton>
+                                        <Button onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
+                                            <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
+                                        </Button>
+                                        <input type='text' className='input'
+                                            onChange={(e) => setBusquedaMarcas(e.target.value)}
+                                            placeholder='Buscar en distraoil'
+                                        />
+                                        <IconButton sx={{ mr: 1 }} onClick={busquedaMarcas}>
+                                            <SearchIcon fontSize='large' sx={{ color: '#000' }} />
+                                        </IconButton>
                                     </div>
                                 ) : (
                                     <div className='button-buscar'>
@@ -257,7 +291,6 @@ const Filtro = () => {
                                             }}
                                             onClick={() => {
                                                 setMostrarMarca('marca')
-                                                setCont1(0)
                                                 setCont2(0)
                                                 handleCloseMarca()
                                             }
@@ -277,11 +310,11 @@ const Filtro = () => {
                                             }}
                                                 onClick={() => {
                                                     setMostrarMarca(marcas.marca)
+                                                    setidMarca(marcas.marca)
                                                     setCont2(0)
                                                     handleCloseMarca()
-                                                }
-                                                }
-                                                key={marcas.marca}>
+                                                }}
+                                                key={marcas.i}>
                                                 <Typography sx={{ fontSize: 20, fontWeight: 400, textTransform: 'capitalize' }}>
                                                     {marcas.marca}
                                                 </Typography>
@@ -324,18 +357,18 @@ const Filtro = () => {
                                 </Button>
                                 <h1>Filtros</h1>
                                 {mostrarComponente ? (
-                                    <div className='busqueda'>
-                                            <IconButton onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
-                                                <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
-                                            </IconButton>
-                                            <input type='text'
-                                                placeholder='Buscar en distraoil'
-                                            />
-                                            <IconButton sx={{ mr: 1 }}>
-                                                <SearchIcon fontSize='large' sx={{ color: '#000' }} />
-                                            </IconButton>
-
-                                    </div>
+                                     <div className='busqueda'>
+                                     <Button onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
+                                         <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
+                                     </Button>
+                                     <input type='text' className='input'
+                                         onChange={(e) => setBusquedaModelos(e.target.value)}
+                                         placeholder='Buscar en distraoil'
+                                     />
+                                     <IconButton sx={{ mr: 1 }} onClick={busquedaModelo}>
+                                         <SearchIcon fontSize='large' sx={{ color: '#000' }} />
+                                     </IconButton>
+                                 </div>
                                 ) : (
                                     <div className='button-buscar'>
                                         <IconButton sx={{ mr: 1 }} onClick={() => setMostrarComponente(!mostrarComponente)}>
@@ -381,7 +414,7 @@ const Filtro = () => {
                                                 onClick={() => {
                                                     setMostrarModelo(modelo.modelo)
                                                     setidProduct(modelo.id)
-                                                    setCont2(0)
+                                                    setidModelo(modelo.modelo)
                                                     handleCloseModelo()
                                                 }
                                                 }
@@ -398,7 +431,7 @@ const Filtro = () => {
                         </div>
                     </Modal>
                 </div>
-                <Link to={`/busqueda/${idProduct}`}>
+                <Link to={`/busqueda/${idProduct}/${idMarca}/${idModelo}`}>
                     <Colores></Colores>
                 </Link>
                 <Input autoComplete=''></Input>

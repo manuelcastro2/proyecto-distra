@@ -19,9 +19,15 @@ class AceitesController extends Controller
     public function modelo2(Request $request)
     {
         $marca = $request->input('marca');
-        $modelo = aceites::query()->select('modelo')->where('marca', $marca)->get();
+        $modelo = aceites::query()->select('modelo','id')->where('marca', $marca)->get();
         return $modelo;
 
+    }
+
+    public function showAceites(string $id)
+    {
+        $referencia = DB::select('select distinct modelo,marca,referencia from aceites,ace_referencias where aceites.id=ace_referencias.id_aceites and  id_aceites = ?', [$id]);
+        return $referencia;
     }
 
 }

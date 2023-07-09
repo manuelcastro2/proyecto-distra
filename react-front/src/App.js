@@ -8,6 +8,7 @@ function App() {
        <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/busqueda/:id/:marcas/:modelos' element={<Busqueda/>}/>
         <Route path='/busqueda/:id' element={<Busqueda/>}/>
       </Routes>
       </BrowserRouter>

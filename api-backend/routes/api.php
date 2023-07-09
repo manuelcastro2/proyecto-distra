@@ -13,11 +13,11 @@ Route::controller(FiltrosController::class)->group(function(){
     Route::get('/filtros','filtros');
     Route::get('/marcas','marcas');
     Route::get('/modelo','modelo');
-    Route::get('/referencia/{id}','show');
-    Route::get('/BusquedaMarca','busquedaMarcas');
+    Route::get('/referencia/{id}/{marca}/{modelo}','show');
 });
 
 Route::controller(AceitesController::class)->group(function(){
     Route::get('/marcas2','marcas2');
     Route::get('/modelo2','modelo2');
+    Route::get('/referencia2/{id}','showAceites');
 });
