@@ -31,16 +31,6 @@ body {
     padding-top: 25px;
 }
 
-.volver {
-    width: 24px;
-    height: 24px;
-    font-size: 14px;
-    color: #4B72FF;
-    text-decoration: none;
-    line-height: 25px;
-    letter-spacing: 0.1px;
-}
-
 .container-title-resultado {
     width: 73%;
     text-align: justify;
@@ -68,57 +58,15 @@ body {
     text-transform: uppercase;
 }
 
-.division {
-    width: 300px;
-    height: 1px;
-    background: #AFABB2;
-    margin-top: 7px;
-}
-
-.division2 {
-    width: 300px;
-    height: 1px;
-    background: #AFABB2;
-    margin: 7px;
-}
-
-.container-result {
+.container-entrega{
+    width: 255px;
+    height: 34px;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
 }
 
-.result {
-    width: 75%;
-    height: 142px;
-    display: flex;
-    justify-content: center;
-}
-
-.img-result {
-    height: 100%;
-    width: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.img {
-    height: 125px;
-    width: 125px;
-    background-image: url(../../img/mobil.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.title-result {
-    text-decoration: none;
-    font-size: 13px;
-    font-style: normal;
+.text-entrega{
+    font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.15px;
-    text-align: left;
-    color: #4B72FF;
-    text-transform: uppercase;
 }

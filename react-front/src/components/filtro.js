@@ -8,7 +8,6 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { List, Typography, ListItemButton, ListItem, Button, FormControl, Modal, IconButton } from '@mui/material';
 import { Input } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
 
 
 const Filtro = () => {
@@ -204,7 +203,7 @@ const Filtro = () => {
                                                     setCont1(0)
                                                     setCont2(0)
                                                     handleCloseFiltro()
-                                                   
+
                                                 }
                                                 }
                                                 key={i}
@@ -358,18 +357,18 @@ const Filtro = () => {
                                 </Button>
                                 <h1>Filtros</h1>
                                 {mostrarComponente ? (
-                                     <div className='busqueda'>
-                                     <Button onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
-                                         <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
-                                     </Button>
-                                     <input type='text' className='input'
-                                         onChange={(e) => setBusquedaModelos(e.target.value)}
-                                         placeholder='Buscar en distraoil'
-                                     />
-                                     <IconButton sx={{ mr: 1 }} onClick={busquedaModelo}>
-                                         <SearchIcon fontSize='large' sx={{ color: '#000' }} />
-                                     </IconButton>
-                                 </div>
+                                    <div className='busqueda'>
+                                        <Button onClick={() => setMostrarComponente(!mostrarComponente)} sx={{ m: 0 }} >
+                                            <ArrowBackIosIcon fontSize='medium' sx={{ color: 'black' }} />
+                                        </Button>
+                                        <input type='text' className='input'
+                                            onChange={(e) => setBusquedaModelos(e.target.value)}
+                                            placeholder='Buscar en distraoil'
+                                        />
+                                        <IconButton sx={{ mr: 1 }} onClick={busquedaModelo}>
+                                            <SearchIcon fontSize='large' sx={{ color: '#000' }} />
+                                        </IconButton>
+                                    </div>
                                 ) : (
                                     <div className='button-buscar'>
                                         <IconButton sx={{ mr: 1 }} onClick={() => setMostrarComponente(!mostrarComponente)}>
@@ -432,7 +431,7 @@ const Filtro = () => {
                         </div>
                     </Modal>
                 </div>
-                <Link to={`/busqueda/${idProduct}/${idMarca}/${idModelo}/${filtro}`}>
+                <Link to={`/busqueda/${filtro}/${idMarca}/${idModelo}`}>
                     <Colores></Colores>
                 </Link>
                 <Input autoComplete=''></Input>
