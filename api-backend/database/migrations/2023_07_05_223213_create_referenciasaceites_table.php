@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ace_referencias', function (Blueprint $table) {
             $table->id();
             $table->string('referencia');
+            $table->double("precio",8,3);
             $table->foreignId('id_aceites')
             ->nullable()
             ->constrained('aceites')

@@ -7,8 +7,6 @@ import SlideComponent from './sliderComponent';
 import Imagenes from './imagenes';
 function Home() {
 
-
-
     const [mostrarComponente1, setMostrarComponente1] = useState(true);
 
     return (

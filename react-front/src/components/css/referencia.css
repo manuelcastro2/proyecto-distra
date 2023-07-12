@@ -58,15 +58,111 @@ body {
     text-transform: uppercase;
 }
 
-.container-entrega{
+.container-entrega {
     width: 255px;
     height: 34px;
     display: flex;
     align-items: center;
 }
 
-.text-entrega{
+.text-entrega {
     font-size: 10px;
     font-weight: 400;
     letter-spacing: 0.15px;
+}
+
+.title-referencia {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+    width: 255px;
+}
+
+.img-referencia {
+    width: 150px;
+    height: 171px;
+    flex-shrink: 0;
+    background-image: url(../../img/mobil.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.container-referencia {
+    width: 255px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-img-referencia {
+    width: 205px;
+}
+
+.informacion {
+    position: relative;
+    top: 17px;
+    width: 255px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.precioReferencia {
+    font-size: 22px;
+    font-weight: 400;
+    color: #000;
+}
+
+.item-envio-referencia {
+    font-size: 10px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: 0.15px;
+    text-transform: capitalize;
+    text-align: justify;
+    height: 19px;
+}
+
+.item-conversion-referencia {
+    margin-top: 5px;
+    height: 19px;
+    font-size: 10px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: 0.15px;
+    text-transform: lowercase;
+    text-align: justify;
+}
+
+.container-Ncantidad {
+    min-width: 115px;
+    min-height: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 40px;
+}
+
+.container-cantidad {
+    position: relative;
+    top: 20px;
+    width: 283px;
+    height: 45px;
+    border-radius: 8px;
+    border: 1px solid #CAC4CF;
+    background: #EEF1FD;
+    display: flex;
+    justify-content: center;
+
 }

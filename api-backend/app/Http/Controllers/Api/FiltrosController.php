@@ -42,13 +42,13 @@ class FiltrosController extends Controller
      */
     public function show(string $marca, string $modelo)
     {
-        $referencia = DB::select('select distinct filtro,modelo,marca,referencia from filtros,fil_referencias where filtros.id=fil_referencias.id_filtros and marca=?', [$marca], 'and modelo = ?', [$modelo]);
+        $referencia = DB::select('select distinct filtro,modelo,marca,referencia,precio from filtros,fil_referencias where filtros.id=fil_referencias.id_filtros and marca=?', [$marca], 'and modelo = ?', [$modelo]);
         return $referencia;
     }
 
     public function referencia(string $referencia)
     {
-        $referencia = DB::select('select distinct filtro,modelo,marca,referencia from filtros,fil_referencias where filtros.id=fil_referencias.id_filtros and referencia = ?', [$referencia]);
+        $referencia = DB::select('select distinct filtro,modelo,marca,referencia,precio from filtros,fil_referencias where filtros.id=fil_referencias.id_filtros and referencia = ?', [$referencia]);
         return $referencia;
     }
 

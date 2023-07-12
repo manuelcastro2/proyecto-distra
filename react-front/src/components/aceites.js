@@ -2,7 +2,7 @@ import './css/home.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Colores from './palette'
+import Colores from './buttonBuscar'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -20,7 +20,6 @@ const Aceites = () => {
     const [buscarModelos, setBusquedaModelos] = useState('');
 
     const [mostrarComponente, setMostrarComponente] = useState(false);
-    const [idProduct, setidProduct] = useState();
     const [tipo, setTipo] = useState('Aceites');
 
     const [marca, setMarcas] = useState([])
@@ -291,7 +290,6 @@ const Aceites = () => {
                                                 }}
                                                     onClick={() => {
                                                         setMostrarModelo(modelo.modelo)
-                                                        setidProduct(modelo.id)
                                                         handleCloseModelo()
                                                     }
                                                     }

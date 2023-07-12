@@ -58,14 +58,14 @@ body {
     line-height: 28px;
 }
 
-.resultado {
+.results {
     width: 300px;
     height: 20px;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .division {
@@ -120,5 +120,61 @@ body {
     letter-spacing: 0.15px;
     text-align: left;
     color: #4B72FF;
-    text-transform: uppercase;
+    text-transform: capitalize;
+}
+
+.direccion {
+    text-decoration: none;
+}
+
+.item-referencia {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.item-precio {
+    color: #858585;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    text-decoration: line-through;
+    text-align: justify;
+    height: 15px;
+}
+
+.item-precioGrande {
+    color: #000;
+    font-size:22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.15px;
+    text-align: justify;
+}
+
+.item-conversion{
+    font-size: 10px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: 0.15px;
+    text-transform: lowercase;
+    text-align: justify;
+}
+
+.item-envio{
+    font-size: 10px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: 0.15px;
+    text-transform: capitalize;
+    text-align: justify;
+}
+
+.division3{
+    position: relative;
+    top: 20px;
 }

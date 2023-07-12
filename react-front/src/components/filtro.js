@@ -2,7 +2,7 @@ import './css/home.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Colores from './palette'
+import Colores from './buttonBuscar'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { List, Typography, ListItemButton, ListItem, Button, FormControl, Modal, IconButton } from '@mui/material';
@@ -119,8 +119,6 @@ const Filtro = () => {
         }
         )
     }
-
-
 
     return (
         <div>

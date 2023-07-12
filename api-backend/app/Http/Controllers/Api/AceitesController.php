@@ -26,13 +26,13 @@ class AceitesController extends Controller
 
     public function showAceites(string $marca, string $modelo)
     {
-        $referencia = DB::select('select distinct modelo,marca,referencia from aceites,ace_referencias where aceites.id=ace_referencias.id_aceites and  marca = ?', [$marca], 'and modelo=?', [$modelo]);
+        $referencia = DB::select('select distinct modelo,marca,referencia,precio from aceites,ace_referencias where aceites.id=ace_referencias.id_aceites and  marca = ?', [$marca], 'and modelo=?', [$modelo]);
         return $referencia;
     }
 
     public function referenciaAceites(string $referencia)
     {
-        $referencia = DB::select('select distinct modelo,marca,referencia from aceites,ace_referencias where aceites.id=ace_referencias.id_aceites and referencia = ?', [$referencia]);
+        $referencia = DB::select('select distinct modelo,marca,referencia,precio from aceites,ace_referencias where aceites.id=ace_referencias.id_aceites and referencia = ?', [$referencia]);
         return $referencia;
     }
 
