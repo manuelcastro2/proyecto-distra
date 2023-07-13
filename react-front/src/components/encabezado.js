@@ -1,6 +1,6 @@
 import React from "react";
 import './css/home.css';
-import {AppBar,Box,Divider,SwipeableDrawer,IconButton,List,ListItem,ListItemButton,Toolbar,Typography,ListItemIcon } from '@mui/material';
+import { AppBar, Box, Divider, SwipeableDrawer, IconButton, List, ListItem, ListItemButton, Toolbar, Typography, ListItemIcon } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
@@ -15,6 +15,8 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import AirportShuttleOutlinedIcon from '@mui/icons-material/AirportShuttleOutlined';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+
 
 const Encabezado = (props) => {
 
@@ -31,6 +33,12 @@ const Encabezado = (props) => {
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
+
+    const navigate = useNavigate();
+
+    const Carrito = () => {
+        navigate('/carrito')
+    }
 
     const drawer = (
         <Box sx={{ textAlign: 'center', flexGrow: 1, fontFamily: "sans-serif", }} >
@@ -85,7 +93,7 @@ const Encabezado = (props) => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <ListItemButton sx={{ textAlign: 'left', width: '85%', mt: 1,pl: 0, }}>
+                    <ListItemButton sx={{ textAlign: 'left', width: '85%', mt: 1, pl: 0, }}>
                         <ListItemIcon >
                             <SearchIcon fontSize="large" sx={{ color: "#1C1B1F" }}></SearchIcon>
                         </ListItemIcon>
@@ -95,7 +103,7 @@ const Encabezado = (props) => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <ListItemButton sx={{ textAlign: 'left', width: '85%',pl: 0, }}>
+                    <ListItemButton sx={{ textAlign: 'left', width: '85%', pl: 0, }}>
                         <ListItemIcon >
                             <LocalMallOutlinedIcon fontSize="large" sx={{ color: "#1C1B1F" }}></LocalMallOutlinedIcon>
                         </ListItemIcon>
@@ -105,7 +113,7 @@ const Encabezado = (props) => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <ListItemButton sx={{ textAlign: 'left', width: '85%',pl: 0, }}>
+                    <ListItemButton sx={{ textAlign: 'left', width: '85%', pl: 0, }}>
                         <ListItemIcon >
                             <FavoriteBorderOutlinedIcon fontSize="large" sx={{ color: "#1C1B1F" }}></FavoriteBorderOutlinedIcon>
                         </ListItemIcon>
@@ -115,7 +123,7 @@ const Encabezado = (props) => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <ListItemButton sx={{ textAlign: 'left', width: '85%',pl: 0, }}>
+                    <ListItemButton sx={{ textAlign: 'left', width: '85%', pl: 0, }}>
                         <ListItemIcon >
                             <PercentOutlinedIcon fontSize="large" sx={{ color: "#1C1B1F" }}></PercentOutlinedIcon>
                         </ListItemIcon>
@@ -125,7 +133,7 @@ const Encabezado = (props) => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <ListItemButton sx={{ textAlign: 'left', width: '85%',pl: 0,}}>
+                    <ListItemButton sx={{ textAlign: 'left', width: '85%', pl: 0, }}>
                         <ListItemIcon >
                             <CarRepairOutlinedIcon fontSize="large" sx={{ color: "#1C1B1F" }} />
                         </ListItemIcon>
@@ -135,7 +143,7 @@ const Encabezado = (props) => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <ListItemButton sx={{ textAlign: 'left', width: '85%',pl: 0, }}>
+                    <ListItemButton sx={{ textAlign: 'left', width: '85%', pl: 0, }}>
                         <ListItemIcon >
                             <LocalShippingOutlinedIcon fontSize="large" sx={{ color: "#1C1B1F" }} />
                         </ListItemIcon>
@@ -145,7 +153,7 @@ const Encabezado = (props) => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <ListItemButton sx={{ textAlign: 'left', width: '85%',pl: 0, }}>
+                    <ListItemButton sx={{ textAlign: 'left', width: '85%', pl: 0, }}>
                         <ListItemIcon >
                             <AirportShuttleOutlinedIcon fontSize="large" sx={{ color: "#1C1B1F" }} />
                         </ListItemIcon>
@@ -155,7 +163,7 @@ const Encabezado = (props) => {
                     </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <ListItemButton sx={{ textAlign: 'left', width: '85%',pl: 0, }}>
+                    <ListItemButton sx={{ textAlign: 'left', width: '85%', pl: 0, }}>
                         <ListItemIcon >
                             <OpacityIcon fontSize="large" sx={{ color: "#1C1B1F" }} />
                         </ListItemIcon>
@@ -164,7 +172,7 @@ const Encabezado = (props) => {
                         </Typography>
                     </ListItemButton>
                 </ListItem><ListItem disablePadding sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <ListItemButton sx={{ textAlign: 'left', width: '85%',pl: 0, }}>
+                    <ListItemButton sx={{ textAlign: 'left', width: '85%', pl: 0, }}>
                         <ListItemIcon >
                             <FilterAltIcon fontSize="large" sx={{ color: "#1C1B1F" }} />
                         </ListItemIcon>
@@ -193,11 +201,13 @@ const Encabezado = (props) => {
                         <div className='img-logo'>
                         </div>
                     </Typography>
-                    <IconButton edge="end"
-                        sx={{ display: { xs: '-ms-flexbox', mb: 'flex' }, ml: 5 }}
-                        color="inherit" aria-label="menu" size="large">
-                        <ShoppingCartIcon fontSize="larger" />
-                    </IconButton>
+                    <form onSubmit={Carrito}>
+                        <IconButton type="submit"
+                            sx={{ display: { xs: '-ms-flexbox', mb: 'flex' }, ml: 6 }}
+                            color="inherit" aria-label="menu" size="large">
+                            <ShoppingCartIcon fontSize="larger" />
+                        </IconButton>
+                    </form>
                 </Toolbar>
             </AppBar>
             <Box>

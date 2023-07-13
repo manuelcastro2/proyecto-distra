@@ -5,6 +5,7 @@ import Busqueda from './components/busqueda';
 import Referencia from './components/referencias';
 import Envio from './components/envio';
 import Domicilio from './components/domicilio';
+import Carrito from './components/carrito';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
           <Route path='/referencia/:tipo/:marcas/:modelos/:referencia' element={<Referencia />} />
           <Route path='/referencia/:tipo/:marcas/:modelos/:ano/:referencia' element={<Referencia />} />
           <Route path='/envio' element={<Envio />} />
-          <Route path='/domicilio' element={<Domicilio/>}/>
+          <Route path='/domicilio' element={<Domicilio />} />
+          <Route path='/carrito' element={<Carrito />} />
         </Routes>
       </BrowserRouter>
     </div>

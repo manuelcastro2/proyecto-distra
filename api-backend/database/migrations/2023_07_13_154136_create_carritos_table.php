@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ace_referencias', function (Blueprint $table) {
+        Schema::create('carrito', function (Blueprint $table) {
             $table->id();
-            $table->string('referencia');
-            $table->double("precio",8,3);
-            $table->foreignId('id_vehiculos')
-            ->nullable()
-            ->constrained('vehiculos')
-            ->cascadeOnUpdate()
-            ->nullOnDelete();
             $table->timestamps();
         });
     }
@@ -29,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ace_referencias');
+        Schema::dropIfExists('carrito');
     }
 };
