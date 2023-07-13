@@ -17,8 +17,8 @@ const Filtro = () => {
     const [buscarMarcas, setBusquedaMarcas] = useState('');
     const [buscarModelos, setBusquedaModelos] = useState('');
 
-    const [cont1, setCont1] = useState(0);
-    const [cont2, setCont2] = useState(0);
+    const [cont1, setCont1] = useState(1);
+    const [cont2, setCont2] = useState(1);
 
 
     const [mostrarModelo, setMostrarModelo] = useState('modelo');
@@ -63,14 +63,13 @@ const Filtro = () => {
     }
 
     const getAllMarcas = async () => {
-        const response = await axios.get(`${endpoint}/marcas`, { params: { filtro: filtro } })
+        const response = await axios.get(`${endpoint}/marcas`)
         setMarcas(response.data)
     }
 
 
-
     const getAllModelo = async () => {
-        const response = await axios.get(`${endpoint}/modelo`, { params: { marca: mostrarMarca, filtro: filtro } });
+        const response = await axios.get(`${endpoint}/modelo`, { params: { marca: mostrarMarca } });
         setModelo(response.data)
     }
 

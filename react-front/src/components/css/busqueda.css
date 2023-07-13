@@ -120,7 +120,7 @@ body {
     letter-spacing: 0.15px;
     text-align: left;
     color: #4B72FF;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 .direccion {
@@ -128,7 +128,7 @@ body {
 }
 
 .item-referencia {
-    width: 240px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     align-items: baseline;

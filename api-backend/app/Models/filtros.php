@@ -9,5 +9,5 @@ class filtros extends Model
 {
     use HasFactory;
 
-    protected $filltable=['filtros','marca','modelo'];
+    protected $filltable=['filtro'];
 }

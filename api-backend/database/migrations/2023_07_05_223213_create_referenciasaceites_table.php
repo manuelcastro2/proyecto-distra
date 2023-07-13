@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('referencia');
             $table->double("precio",8,3);
-            $table->foreignId('id_aceites')
+            $table->foreignId('id_vehiculos')
             ->nullable()
-            ->constrained('aceites')
+            ->constrained('vehiculos')
             ->cascadeOnUpdate()
             ->nullOnDelete();
             $table->timestamps();

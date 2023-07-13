@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,12 +13,17 @@ return new class extends Migration
         Schema::create('fil_referencias', function (Blueprint $table) {
             $table->id();
             $table->string('referencia');
-            $table->double("precio",8,3);
+            $table->double("precio", 8, 3);
             $table->foreignId('id_filtros')
-            ->nullable()
-            ->constrained('filtros')
-            ->cascadeOnUpdate()
-            ->nullOnDelete();
+                ->nullable()
+                ->constrained('filtros')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+            $table->foreignId('id_vehiculos')
+                ->nullable()
+                ->constrained('vehiculos')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->timestamps();
         });
     }

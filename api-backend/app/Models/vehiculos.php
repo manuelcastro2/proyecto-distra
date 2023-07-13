@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class aceites extends Model
+class filtros extends Model
 {
     use HasFactory;
 
-    protected $filltable=['marca','modelo'];
+    protected $filltable=['marca','modelo','fecha'];
 }

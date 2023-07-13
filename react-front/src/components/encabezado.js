@@ -1,23 +1,12 @@
 import React from "react";
 import './css/home.css';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
+import {AppBar,Box,Divider,SwipeableDrawer,IconButton,List,ListItem,ListItemButton,Toolbar,Typography,ListItemIcon } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import './css/home.css';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CarRepairOutlinedIcon from '@mui/icons-material/CarRepairOutlined';
@@ -187,7 +176,6 @@ const Encabezado = (props) => {
             </List>
         </Box>
     )
-
 
     return (
         <ThemeProvider theme={theme}>

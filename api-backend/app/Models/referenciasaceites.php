@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class referenciasaceites extends Model
 {
     use HasFactory;
+
+    protected $filltable=['referencia','precio','id_vehiculos'];
 }

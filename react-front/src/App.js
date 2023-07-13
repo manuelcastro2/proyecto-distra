@@ -13,7 +13,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/busqueda/:tipo/:marcas/:modelos' element={<Busqueda />} />
+          <Route path='/busqueda/:tipo/:marcas/:modelos/:ano' element={<Busqueda />} />
           <Route path='/referencia/:tipo/:marcas/:modelos/:referencia' element={<Referencia />} />
+          <Route path='/referencia/:tipo/:marcas/:modelos/:ano/:referencia' element={<Referencia />} />
           <Route path='/envio' element={<Envio />} />
           <Route path='/domicilio' element={<Domicilio/>}/>
         </Routes>

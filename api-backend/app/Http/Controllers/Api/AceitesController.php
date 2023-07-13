@@ -10,29 +10,18 @@ use Illuminate\Support\Facades\DB;
 class AceitesController extends Controller
 {
 
-    public function marcas2()
-    {
-        $filtro = DB::select('SELECT DISTINCT marca FROM aceites');
-        return $filtro;
-    }
-
-    public function modelo2(Request $request)
+    public function showAceites(Request $request)
     {
         $marca = $request->input('marca');
-        $modelo = aceites::query()->select('modelo', 'id')->where('marca', $marca)->get();
-        return $modelo;
-
-    }
-
-    public function showAceites(string $marca, string $modelo)
-    {
-        $referencia = DB::select('select distinct modelo,marca,referencia,precio from aceites,ace_referencias where aceites.id=ace_referencias.id_aceites and  marca = ?', [$marca], 'and modelo=?', [$modelo]);
+        $modelo = $request->input('modelo');
+        $ano = $request->input('ano');
+        $referencia = DB::select('select distinct modelo,marca,referencia,precio from vehiculos,ace_referencias where vehiculos.id=ace_referencias.id_vehiculos and  marca = ? and modelo= ? and fecha = ?', [$marca, $modelo, $ano]);
         return $referencia;
     }
 
     public function referenciaAceites(string $referencia)
     {
-        $referencia = DB::select('select distinct modelo,marca,referencia,precio from aceites,ace_referencias where aceites.id=ace_referencias.id_aceites and referencia = ?', [$referencia]);
+        $referencia = DB::select('select distinct modelo,marca,referencia,precio from vehiculos,ace_referencias where vehiculos.id=ace_referencias.id_vehiculos and referencia = ?', [$referencia]);
         return $referencia;
     }
 

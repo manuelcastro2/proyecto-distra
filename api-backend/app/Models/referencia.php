@@ -9,5 +9,5 @@ class referencia extends Model
 {
     use HasFactory;
 
-    protected $filltable=['referencia','filtros_id'];
+    protected $filltable=['referencia','precio','id_filtros','id_vehiculos'];
 }
