@@ -203,7 +203,7 @@ const Encabezado = (props) => {
                     </Typography>
                     <form onSubmit={Carrito}>
                         <IconButton type="submit"
-                            sx={{ display: { xs: '-ms-flexbox', mb: 'flex' }, ml: 6 }}
+                            sx={{ display: { xs: '-ms-flexbox', mb: 'flex' }, ml: 4 }}
                             color="inherit" aria-label="menu" size="large">
                             <ShoppingCartIcon fontSize="larger" />
                         </IconButton>

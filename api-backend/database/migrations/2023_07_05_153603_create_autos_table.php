@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('marca');
             $table->string('modelo');
-            $table->int('fecha');
+            $table->integer('fecha');
             $table->timestamps();
         });
     }

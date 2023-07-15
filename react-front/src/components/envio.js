@@ -169,7 +169,7 @@ const Envio = () => {
                 </div>
                 <div className='container-info-product-price'>
                     <h3 className='info-product'>
-                        {cantidad + 'x ' + tipo + ' ' + marcas + ' ' + modelos + ' ' + referencia}
+                        {cantidad + ' ' + tipo + ' ' + marcas + ' ' + modelos + ' ' + referencia}
                     </h3>
                     <div className='division-enviar'>
                     </div>

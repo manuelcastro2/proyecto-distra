@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class carrito extends Model
 {
     use HasFactory;
+
+    protected $filltable=['tipo','marca','modelo','referencia','precio','cantidad'];
 }

@@ -1,0 +1,108 @@
+.container-see-references {
+    width: 100%;
+    min-height: 659px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 65.5px;
+    gap: 4px;
+    scroll-behavior: smooth;
+    overflow: scroll;
+}
+
+.container-info-product-price-carrito {
+    width: 100%;
+    min-height: 141px;
+    background: #EEF1FD;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 58px;
+}
+
+.container-all-carrito {
+    width: 100%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-reference-one {
+    width: 100%;
+    height: 124px;
+    background: #EEF1FD;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-reference {
+    width: 100%;
+    height: 76px;
+    border-bottom: 1px solid #7A757F;
+    display: flex;
+    align-items: center;
+}
+
+.container-reference-actions {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: baseline;
+    justify-content: baseline;
+}
+
+.img-reference {
+    background-image: url('../../img/mobil.png');
+    width: 71px;
+    height: 63px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-left: 18px;
+}
+
+.text-reference {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    width: 180px;
+}
+
+.button-actions {
+    width: 60%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Button-actions {
+    outline: 0;
+    border: none;
+    background: transparent;
+    color: #4B72FF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    position: relative;
+    left: 30px;
+}
+
+@media (max-width: 800px) {
+    .container-all-carrito {
+        width: 100%;
+        height: 851px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

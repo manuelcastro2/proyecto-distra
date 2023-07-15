@@ -4,12 +4,16 @@ import Encabezado from "./encabezado";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ButtonGroup, Button } from '@mui/material';
+import { Button, Alert, Snackbar } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Referencia = () => {
+
+    const endpoint1 = 'http://localhost:8000/api/referencia/'
+    const endpoint2 = 'http://localhost:8000/api/referencia2/'
+    const endpoint3 = 'http://localhost:8000/api/cart'
 
     const theme = createTheme({
         palette: {
@@ -20,23 +24,18 @@ const Referencia = () => {
     });
 
     const navigate = useNavigate();
-
-    const endpoint1 = 'http://localhost:8000/api/referencia/'
-    const endpoint2 = 'http://localhost:8000/api/referencia2/'
-
     const { tipo, marcas, modelos, ano, referencia } = useParams();
     const [referen, setReferencia] = useState([]);
     const [precio, setPrecio] = useState('');
     const [conversion, setConversion] = useState('');
     const [cantidad, setCantidad] = useState(1);
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
         if (marcas != undefined && modelos != undefined && tipo != 'Aceites') {
             getReferencebyForeignId();
-            disminuir()
         } else {
             getReference2byForeignId();
-            disminuir()
         }
     }, [])
 
@@ -50,6 +49,15 @@ const Referencia = () => {
         const response = await axios.get(`${endpoint2}${referencia}`);
         setReferencia(response.data);
         setPrecio(response.data[0].precio)
+    }
+
+    const getAgregarCarrito = async () => {
+        await axios.post(endpoint3, { tipo: tipo, marca: marcas, modelo: modelos, referencia: referencia, precio: precio, cantidad: cantidad })
+        setOpen(true)
+    }
+
+    const handleClose = () => {
+        setOpen(false)
     }
 
     const aumentar = () => {
@@ -74,6 +82,7 @@ const Referencia = () => {
         cantidad: cantidad,
         precio: precio,
     }
+
     const envio = () => {
         navigate('/envio', { state: { datos: obj } })
     }
@@ -149,11 +158,16 @@ const Referencia = () => {
                             width: 283,
                             height: 45,
                             marginBottom: 20
-                        }} variant="contained">
+                        }}
+                        variant="contained"
+                        onClick={() => getAgregarCarrito()}>
                         <div className="text">
                             Agregar al carrito
                         </div>
                     </Button>
+                    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                        <Alert onClose={handleClose} severity="success">Se agrego al carrito</Alert>
+                    </Snackbar>
                 </ThemeProvider>
             </div >
         )
@@ -230,11 +244,16 @@ const Referencia = () => {
                             width: 283,
                             height: 45,
                             marginBottom: 20
-                        }} variant="contained">
+                        }}
+                        variant="contained"
+                        onClick={() => getAgregarCarrito()}>
                         <div className="text">
                             Agregar al carrito
                         </div>
                     </Button>
+                    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                        <Alert onClose={handleClose} severity="success">Se agrego al carrito</Alert>
+                    </Snackbar>
                 </ThemeProvider>
             </div >
         )
