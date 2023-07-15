@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2023 a las 15:52:33
+-- Tiempo de generación: 15-07-2023 a las 06:47:17
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -41,10 +41,38 @@ CREATE TABLE `ace_referencias` (
 --
 
 INSERT INTO `ace_referencias` (`id`, `referencia`, `precio`, `id_vehiculos`, `created_at`, `updated_at`) VALUES
-(1, 'Aceite 15w50 4t Sintetico Liqui Moly', 170.000, 11, '2023-06-29 08:08:48', '2023-06-29 08:08:48'),
-(2, 'Aceite 15w20 10t Sintetico Liqui', 155.000, 11, '2023-06-29 08:08:48', '2023-06-29 08:08:48'),
-(3, 'Aceite para motor Liqui Moly 10W-30', 157.500, 2, '2023-06-29 08:08:48', '2023-06-29 08:08:48'),
-(4, 'Aceite para motor Liqui Moly 10W-50', 160.500, 2, '2023-06-29 08:08:48', '2023-06-29 08:08:48');
+(1, '15w50 4t Sintetico Liqui Moly', 170.000, 11, '2023-06-29 13:08:48', '2023-06-29 13:08:48'),
+(2, '15w20 10t Sintetico Liqui', 155.000, 11, '2023-06-29 13:08:48', '2023-06-29 13:08:48'),
+(3, 'motor Liqui Moly 10W-30', 157.500, 2, '2023-06-29 13:08:48', '2023-06-29 13:08:48'),
+(4, 'Liqui Moly 10W-50', 160.500, 2, '2023-06-29 13:08:48', '2023-06-29 13:08:48');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tipo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `marca` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modelo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `referencia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `precio` double(8,3) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`id`, `tipo`, `marca`, `modelo`, `referencia`, `precio`, `cantidad`, `created_at`, `updated_at`) VALUES
+(1, 'Aceites', 'kia', 'picanto', 'motor Liqui Moly 10W-30', 157.500, 1, NULL, NULL),
+(3, 'Aceites', 'kia', 'picanto', 'motor Liqui Moly 10W-50', 160.500, 1, NULL, NULL),
+(4, 'filtro de aire', 'chevrolet', 'aveo', 'DIESEL 2008-2013', 30.300, 1, NULL, NULL),
+(5, 'filtro de aire', 'chevrolet', 'aveo', 'DIESEL 2016-2023', 25.500, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -80,10 +108,10 @@ CREATE TABLE `filtros` (
 --
 
 INSERT INTO `filtros` (`id`, `filtro`, `created_at`, `updated_at`) VALUES
-(1, 'filtro de aire', '2023-06-29 12:57:42', '2023-06-29 12:57:42'),
-(2, 'filtro de aceite', '2023-06-29 13:01:38', '2023-06-29 13:01:38'),
-(3, 'filtro de combustible', '2023-06-29 13:06:44', '2023-06-29 13:06:44'),
-(4, 'filtro de cabina', '2023-06-29 13:09:28', '2023-06-29 13:09:28');
+(1, 'filtro de aire', '2023-06-29 17:57:42', '2023-06-29 17:57:42'),
+(2, 'filtro de aceite', '2023-06-29 18:01:38', '2023-06-29 18:01:38'),
+(3, 'filtro de combustible', '2023-06-29 18:06:44', '2023-06-29 18:06:44'),
+(4, 'filtro de cabina', '2023-06-29 18:09:28', '2023-06-29 18:09:28');
 
 -- --------------------------------------------------------
 
@@ -106,8 +134,8 @@ CREATE TABLE `fil_referencias` (
 --
 
 INSERT INTO `fil_referencias` (`id`, `referencia`, `precio`, `id_filtros`, `id_vehiculos`, `created_at`, `updated_at`) VALUES
-(1, 'DIESEL 2008-2013', 30.300, 1, 9, '2023-06-29 07:57:42', '2023-06-29 07:57:42'),
-(2, 'DIESEL 2016-2023', 25.500, 1, 18, '2023-06-29 07:57:42', '2023-06-29 07:57:42');
+(1, 'DIESEL 2008-2013', 30.300, 1, 9, '2023-06-29 12:57:42', '2023-06-29 12:57:42'),
+(2, 'DIESEL 2016-2023', 25.500, 1, 18, '2023-06-29 12:57:42', '2023-06-29 12:57:42');
 
 -- --------------------------------------------------------
 
@@ -127,13 +155,14 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2023_06_27_233123_create_filtros_table', 1),
-(6, '2023_07_05_153603_create_autos_table', 1),
-(7, '2023_07_05_155128_create_referencias_table', 1),
-(8, '2023_07_05_223213_create_referenciasaceites_table', 1);
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 2),
+(3, '2019_08_19_000000_create_failed_jobs_table', 3),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 4),
+(5, '2023_06_27_233123_create_filtros_table', 5),
+(6, '2023_07_05_153603_create_autos_table', 6),
+(7, '2023_07_05_155128_create_referencias_table', 7),
+(8, '2023_07_05_223213_create_referenciasaceites_table', 8),
+(9, '2023_07_13_154136_create_carritos_table', 9);
 
 -- --------------------------------------------------------
 
@@ -193,7 +222,7 @@ CREATE TABLE `vehiculos` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `marca` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `modelo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha` int(255) NOT NULL,
+  `fecha` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -203,24 +232,24 @@ CREATE TABLE `vehiculos` (
 --
 
 INSERT INTO `vehiculos` (`id`, `marca`, `modelo`, `fecha`, `created_at`, `updated_at`) VALUES
-(1, 'chevrolet', 'spark gt', 2013, '2023-06-29 12:57:42', '2023-06-29 12:57:42'),
-(2, 'kia', 'picanto', 2017, '2023-06-29 12:58:32', '2023-06-29 12:58:32'),
-(3, 'nissan', 'march', 2013, '2023-06-29 13:01:38', '2023-06-29 13:01:38'),
-(4, 'renault', 'sandero', 2015, '2023-06-29 13:04:54', '2023-06-29 13:04:54'),
-(5, 'hyundai', 'HB20', 2021, '2023-06-29 13:06:44', '2023-06-29 13:06:44'),
-(6, 'mazda', 'mazda3', 2023, '2023-06-29 13:08:48', '2023-06-29 13:08:48'),
-(7, 'suzuki', 'vitara 4x4', 2019, '2023-06-29 13:09:28', '2023-06-29 13:09:28'),
-(8, 'audi', 'A3', 2011, '2023-06-29 13:11:08', '2023-06-29 13:11:08'),
-(9, 'chevrolet', 'aveo', 2023, '2023-06-29 12:58:32', '2023-06-29 12:58:32'),
-(10, 'chevrolet', 'spark gt', 2020, '2023-06-29 12:58:32', '2023-06-29 12:58:32'),
-(11, 'kia', 'picanto', 2019, '2023-06-29 12:58:32', '2023-06-29 12:58:32'),
-(12, 'nissan', 'march', 2022, '2023-06-29 13:01:38', '2023-06-29 13:01:38'),
-(13, 'renault', 'sandero', 2018, '2023-06-29 13:04:54', '2023-06-29 13:04:54'),
-(14, 'hyundai', 'HB20', 2023, '2023-06-29 13:06:44', '2023-06-29 13:06:44'),
-(15, 'mazda', 'mazda3', 2022, '2023-06-29 13:08:48', '2023-06-29 13:08:48'),
-(16, 'suzuki', 'vitara 4x4', 2017, '2023-06-29 13:09:28', '2023-06-29 13:09:28'),
-(17, 'audi', 'A3', 2015, '2023-06-29 13:11:08', '2023-06-29 13:11:08'),
-(18, 'chevrolet', 'aveo', 2010, '2023-06-29 12:58:32', '2023-06-29 12:58:32');
+(1, 'chevrolet', 'spark gt', 2013, '2023-06-29 17:57:42', '2023-06-29 17:57:42'),
+(2, 'kia', 'picanto', 2017, '2023-06-29 17:58:32', '2023-06-29 17:58:32'),
+(3, 'nissan', 'march', 2013, '2023-06-29 18:01:38', '2023-06-29 18:01:38'),
+(4, 'renault', 'sandero', 2015, '2023-06-29 18:04:54', '2023-06-29 18:04:54'),
+(5, 'hyundai', 'HB20', 2021, '2023-06-29 18:06:44', '2023-06-29 18:06:44'),
+(6, 'mazda', 'mazda3', 2023, '2023-06-29 18:08:48', '2023-06-29 18:08:48'),
+(7, 'suzuki', 'vitara 4x4', 2019, '2023-06-29 18:09:28', '2023-06-29 18:09:28'),
+(8, 'audi', 'A3', 2011, '2023-06-29 18:11:08', '2023-06-29 18:11:08'),
+(9, 'chevrolet', 'aveo', 2023, '2023-06-29 17:58:32', '2023-06-29 17:58:32'),
+(10, 'chevrolet', 'spark gt', 2020, '2023-06-29 17:58:32', '2023-06-29 17:58:32'),
+(11, 'kia', 'picanto', 2019, '2023-06-29 17:58:32', '2023-06-29 17:58:32'),
+(12, 'nissan', 'march', 2022, '2023-06-29 18:01:38', '2023-06-29 18:01:38'),
+(13, 'renault', 'sandero', 2018, '2023-06-29 18:04:54', '2023-06-29 18:04:54'),
+(14, 'hyundai', 'HB20', 2023, '2023-06-29 18:06:44', '2023-06-29 18:06:44'),
+(15, 'mazda', 'mazda3', 2022, '2023-06-29 18:08:48', '2023-06-29 18:08:48'),
+(16, 'suzuki', 'vitara 4x4', 2017, '2023-06-29 18:09:28', '2023-06-29 18:09:28'),
+(17, 'audi', 'A3', 2015, '2023-06-29 18:11:08', '2023-06-29 18:11:08'),
+(18, 'chevrolet', 'aveo', 2010, '2023-06-29 17:58:32', '2023-06-29 17:58:32');
 
 --
 -- Índices para tablas volcadas
@@ -232,6 +261,13 @@ INSERT INTO `vehiculos` (`id`, `marca`, `modelo`, `fecha`, `created_at`, `update
 ALTER TABLE `ace_referencias`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ace_referencias_id_vehiculos_foreign` (`id_vehiculos`);
+
+--
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `referencia` (`referencia`);
 
 --
 -- Indices de la tabla `failed_jobs`
@@ -298,6 +334,12 @@ ALTER TABLE `ace_referencias`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT de la tabla `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -307,7 +349,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `filtros`
 --
 ALTER TABLE `filtros`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `fil_referencias`
@@ -319,7 +361,7 @@ ALTER TABLE `fil_referencias`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`

@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('tipo');
             $table->string('marca');
             $table->string('modelo');
-            $table->string('referencia');
+            $table->string('referencia')->unique();
             $table->double('precio',8,3);
             $table->integer('cantidad');
             $table->timestamps();
