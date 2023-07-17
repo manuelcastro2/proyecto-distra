@@ -6,6 +6,7 @@ import Referencia from './components/referencias';
 import Envio from './components/envio';
 import Domicilio from './components/domicilio';
 import Carrito from './components/carrito';
+import Pago from './components/pago';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/envio' element={<Envio />} />
           <Route path='/domicilio' element={<Domicilio />} />
           <Route path='/carrito' element={<Carrito />} />
+          <Route path='/metodopago' element={<Pago />} />
         </Routes>
       </BrowserRouter>
     </div>

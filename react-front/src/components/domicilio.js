@@ -16,7 +16,7 @@ const Domicilio = () => {
     const [nombre, setNombre] = useState('')
     const [Recibirdepartamento, setRecibirDepartamento] = useState('')
     const [RecibirMunicipio, setRecibirMunicipio] = useState('')
-    const [departamento, setDepartamento] = useState('Departamento')
+    const [departamento, setDepartamento] = useState('Departamentos')
     const [Municipio, setMunicipio] = useState('Municipios')
     const [direccion, setDireccion] = useState('')
     const [refernciasAdicional, setRefernciasAdicional] = useState('')
@@ -52,10 +52,11 @@ const Domicilio = () => {
                     if (departamento == undefined && Municipio == undefined) {
                         setDepartamento('Departamentos');
                         setMunicipio('Municipios');
-                    } else {
+                    } else if(departamento == 'Departamentos' && Municipio == 'Municipios'){
+
+                    }else {
                         setDepartamento(state.datos.departamentos);
                         setMunicipio(state.datos.municipios);
-
                     }
                     setCont(0)
                     break;

@@ -83,9 +83,23 @@ const Referencia = () => {
         precio: precio,
     }
 
+    const obj2= {
+        tipo: tipo,
+        marcas: marcas,
+        modelos: modelos,
+        referencia: referencia,
+        cantidad: cantidad,
+        precio: precio,
+        ano:ano
+    }
+
     const envio = () => {
         navigate('/envio', { state: { datos: obj } })
     }
+    const envio2 = () => {
+        navigate('/envio', { state: { datos: obj2 } })
+    }
+
 
 
     if (tipo != 'Aceites') {
@@ -224,7 +238,7 @@ const Referencia = () => {
                     </Button>
                 </div>
                 <ThemeProvider theme={theme} >
-                    <Button color="secondary" onClick={envio}
+                    <Button color="secondary" onClick={envio2}
                         sx={{
                             position: 'relative',
                             top: 50,

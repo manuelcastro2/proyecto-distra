@@ -18,6 +18,7 @@ const Envio = () => {
     const [direccion, setDireccion] = useState('')
     const [refernciasAdicional, setRefernciasAdicional] = useState('')
     const [telefono, setTelefono] = useState('')
+    const [ano, setAno] = useState('')
     const { state } = useLocation();
 
     useEffect(() => {
@@ -33,6 +34,7 @@ const Envio = () => {
         setDireccion(state.datos.direccion);
         setRefernciasAdicional(state.datos.refernciasAdicional);
         setTelefono(state.datos.telefono);
+        setAno(state.datos.ano)
         console.log(state);
     })
 
@@ -74,116 +76,246 @@ const Envio = () => {
         })
     }
 
+    const datos3MetodoPago = () => {
+        navigate('/metodopago', {
+            state: {
+                datos: {
+                    tipo: tipo,
+                    marcas: marcas,
+                    modelos: modelos,
+                    referencia: referencia,
+                    cantidad: cantidad,
+                    precio: precio,
+                    nombre: nombre,
+                    departamentos: departamento,
+                    municipios: Municipio,
+                    direccion: direccion,
+                    refernciasAdicional: refernciasAdicional,
+                    telefono: telefono,
+                }
+            }
+        })
+    }
+
     if (nombre == undefined &&
         departamento == undefined &&
         Municipio == undefined &&
         direccion == undefined &&
         refernciasAdicional == undefined &&
         telefono == undefined) {
-        return (
-            <div className='container-all'>
-                <div className='cartel'>
-                    <Link to={`/referencia/${tipo}/${marcas}/${modelos}/${referencia}`}>
-                        <Button sx={{ color: '#fff' }}>
-                            <ArrowBackIosIcon></ArrowBackIosIcon>
-                        </Button>
-                    </Link>
-                    <p className='title-envio'>Método de envio</p>
-                </div>
-                <div className='container-domicilio-envio'>
-                    <div className='container-domicilio'>
-                        <h1 className='title-domicilio'>Domicilio y telefono</h1>
-                        <form onSubmit={datos} >
-                            <button className='mensaje' type="submit">Añadir un domicilio de entrega</button>
-                        </form>
+        if (tipo == 'Aceites') {
+            return (
+                <div className='container-all'>
+                    <div className='cartel'>
+                        <Link to={`/referencia/${tipo}/${marcas}/${modelos}/${ano}/${referencia}`}>
+                            <Button sx={{ color: '#fff' }}>
+                                <ArrowBackIosIcon></ArrowBackIosIcon>
+                            </Button>
+                        </Link>
+                        <p className='title-envio'>Método de envio</p>
                     </div>
-                    <div className='container-o'>
-                        o
-                    </div>
-                    <div className='container-tienda'>
-                        <Button sx={{ color: '#000' }}>
-                            <div className='container-title-tienda'>
-                                recoge en tienda
-                            </div>
-                            <NavigateNextIcon fontSize='large' sx={{ color: '#858585' }}></NavigateNextIcon>
-                        </Button>
-                    </div>
-                </div>
-                <div className='container-info-product-price'>
-                    <h3 className='info-product'>
-                        {cantidad + 'x ' + tipo + ' ' + marcas + ' ' + modelos + ' ' + referencia}
-                    </h3>
-                    <div className='division-enviar'>
-                    </div>
-                    <div className='contenedor-price'>
-                        <p className='text-pago'>
-                            pagas
-                        </p>
-                        <p className='text-price'>
-                            {"$" + Number.parseFloat(precio).toFixed(3)}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        )
-    } else {
-        return (
-            <div className='container-all'>
-                <div className='cartel'>
-                    <Link to={`/referencia/${tipo}/${marcas}/${modelos}/${referencia}`}>
-                        <Button sx={{ color: '#fff' }}>
-                            <ArrowBackIosIcon></ArrowBackIosIcon>
-                        </Button>
-                    </Link>
-                    <p className='title-envio'>Método de envio</p>
-                </div>
-                <div className='container-domicilio-envio'>
-                    <div className='container-domicilio-contenido'>
-                        <h1 className='title-domicilio'>Domicilio y telefono</h1>
-                        <div className='contenido'>
-                            {direccion + ' ' + refernciasAdicional + ' ' + departamento + ', ' + Municipio + ' - ' + nombre + ' - ' + telefono}
+                    <div className='container-domicilio-envio'>
+                        <div className='container-domicilio'>
+                            <h1 className='title-domicilio'>Domicilio y telefono</h1>
+                            <form onSubmit={datos} >
+                                <button className='mensaje' type="submit">Añadir un domicilio de entrega</button>
+                            </form>
                         </div>
-                        <form onSubmit={datos2}>
-                            <button className='mensaje' type="submit">Editar</button>
-                        </form>
+                        <div className='container-o'>
+                            o
+                        </div>
+                        <div className='container-tienda'>
+                            <Button sx={{ color: '#000' }}>
+                                <div className='container-title-tienda'>
+                                    recoge en tienda
+                                </div>
+                                <NavigateNextIcon fontSize='large' sx={{ color: '#858585' }}></NavigateNextIcon>
+                            </Button>
+                        </div>
                     </div>
-                    <div className='container-tienda-spancing'>
-                        <Button sx={{ color: '#000' }}>
-                            <div className='container-title-tienda'>
-                                Llega entre el 1 y 6 de jul. Gratis a tu domicilio
-                            </div>
-                            <NavigateNextIcon fontSize='large' sx={{ color: '#858585' }}></NavigateNextIcon>
-                        </Button>
-                    </div>
-                    <div className='container-o'>
-                        o
-                    </div>
-                    <div className='container-tienda'>
-                        <Button sx={{ color: '#000' }}>
-                            <div className='container-title-tienda'>
-                                recoge en tienda
-                            </div>
-                            <NavigateNextIcon fontSize='large' sx={{ color: '#858585' }}></NavigateNextIcon>
-                        </Button>
-                    </div>
-                </div>
-                <div className='container-info-product-price'>
-                    <h3 className='info-product'>
-                        {cantidad + ' ' + tipo + ' ' + marcas + ' ' + modelos + ' ' + referencia}
-                    </h3>
-                    <div className='division-enviar'>
-                    </div>
-                    <div className='contenedor-price'>
-                        <p className='text-pago'>
-                            pagas
-                        </p>
-                        <p className='text-price'>
-                            {"$" + Number.parseFloat(precio).toFixed(3)}
-                        </p>
+                    <div className='container-info-product-price'>
+                        <h3 className='info-product'>
+                            {cantidad + 'x ' + tipo + ' ' + marcas + ' ' + modelos + ' ' + referencia}
+                        </h3>
+                        <div className='division-enviar'>
+                        </div>
+                        <div className='contenedor-price'>
+                            <p className='text-pago'>
+                                pagas
+                            </p>
+                            <p className='text-price'>
+                                {"$" + Number.parseFloat(precio).toFixed(3)}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className='container-all'>
+                    <div className='cartel'>
+                        <Link to={`/referencia/${tipo}/${marcas}/${modelos}/${referencia}`}>
+                            <Button sx={{ color: '#fff' }}>
+                                <ArrowBackIosIcon></ArrowBackIosIcon>
+                            </Button>
+                        </Link>
+                        <p className='title-envio'>Método de envio</p>
+                    </div>
+                    <div className='container-domicilio-envio'>
+                        <div className='container-domicilio'>
+                            <h1 className='title-domicilio'>Domicilio y telefono</h1>
+                            <form onSubmit={datos} >
+                                <button className='mensaje' type="submit">Añadir un domicilio de entrega</button>
+                            </form>
+                        </div>
+                        <div className='container-o'>
+                            o
+                        </div>
+                        <div className='container-tienda'>
+                            <Button sx={{ color: '#000' }}>
+                                <div className='container-title-tienda'>
+                                    recoge en tienda
+                                </div>
+                                <NavigateNextIcon fontSize='large' sx={{ color: '#858585' }}></NavigateNextIcon>
+                            </Button>
+                        </div>
+                    </div>
+                    <div className='container-info-product-price'>
+                        <h3 className='info-product'>
+                            {cantidad + 'x ' + tipo + ' ' + marcas + ' ' + modelos + ' ' + referencia}
+                        </h3>
+                        <div className='division-enviar'>
+                        </div>
+                        <div className='contenedor-price'>
+                            <p className='text-pago'>
+                                pagas
+                            </p>
+                            <p className='text-price'>
+                                {"$" + Number.parseFloat(precio).toFixed(3)}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    } else {
+        if (tipo == 'Aceites') {
+            return (
+                <div className='container-all'>
+                    <div className='cartel'>
+                        <Link to={`/referencia/${tipo}/${marcas}/${modelos}/${ano}/${referencia}`}>
+                            <Button sx={{ color: '#fff' }}>
+                                <ArrowBackIosIcon></ArrowBackIosIcon>
+                            </Button>
+                        </Link>
+                        <p className='title-envio'>Método de envio</p>
+                    </div>
+                    <div className='container-domicilio-envio'>
+                        <div className='container-domicilio-contenido'>
+                            <h1 className='title-domicilio'>Domicilio y telefono</h1>
+                            <div className='contenido'>
+                                {direccion + ' ' + refernciasAdicional + ' ' + departamento + ', ' + Municipio + ' - ' + nombre + ' - ' + telefono}
+                            </div>
+                            <form onSubmit={datos2}>
+                                <button className='mensaje' type="submit">Editar</button>
+                            </form>
+                        </div>
+                        <div className='container-tienda-spancing'>
+                            <Button sx={{ color: '#000' }} onClick={datos3MetodoPago}>
+                                <div className='container-title-tienda'>
+                                    Llega entre el 1 y 6 de jul. Gratis a tu domicilio
+                                </div>
+                                <NavigateNextIcon fontSize='large' sx={{ color: '#858585' }}></NavigateNextIcon>
+                            </Button>
+                        </div>
+                        <div className='container-o'>
+                            o
+                        </div>
+                        <div className='container-tienda'>
+                            <Button sx={{ color: '#000' }}>
+                                <div className='container-title-tienda'>
+                                    recoge en tienda
+                                </div>
+                                <NavigateNextIcon fontSize='large' sx={{ color: '#858585' }}></NavigateNextIcon>
+                            </Button>
+                        </div>
+                    </div>
+                    <div className='container-info-product-price'>
+                        <h3 className='info-product'>
+                            {cantidad + ' ' + tipo + ' ' + marcas + ' ' + modelos + ' ' + referencia}
+                        </h3>
+                        <div className='division-enviar'>
+                        </div>
+                        <div className='contenedor-price'>
+                            <p className='text-pago'>
+                                pagas
+                            </p>
+                            <p className='text-price'>
+                                {"$" + Number.parseFloat(precio).toFixed(3)}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div className='container-all'>
+                    <div className='cartel'>
+                        <Link to={`/referencia/${tipo}/${marcas}/${modelos}/${referencia}`}>
+                            <Button sx={{ color: '#fff' }}>
+                                <ArrowBackIosIcon></ArrowBackIosIcon>
+                            </Button>
+                        </Link>
+                        <p className='title-envio'>Método de envio</p>
+                    </div>
+                    <div className='container-domicilio-envio'>
+                        <div className='container-domicilio-contenido'>
+                            <h1 className='title-domicilio'>Domicilio y telefono</h1>
+                            <div className='contenido'>
+                                {direccion + ' ' + refernciasAdicional + ' ' + departamento + ', ' + Municipio + ' - ' + nombre + ' - ' + telefono}
+                            </div>
+                            <form onSubmit={datos2}>
+                                <button className='mensaje' type="submit">Editar</button>
+                            </form>
+                        </div>
+                        <div className='container-tienda-spancing'>
+                            <Button sx={{ color: '#000' }} onClick={datos3MetodoPago}>
+                                <div className='container-title-tienda'>
+                                    Llega entre el 1 y 6 de jul. Gratis a tu domicilio
+                                </div>
+                                <NavigateNextIcon fontSize='large' sx={{ color: '#858585' }}></NavigateNextIcon>
+                            </Button>
+                        </div>
+                        <div className='container-o'>
+                            o
+                        </div>
+                        <div className='container-tienda'>
+                            <Button sx={{ color: '#000' }}>
+                                <div className='container-title-tienda'>
+                                    recoge en tienda
+                                </div>
+                                <NavigateNextIcon fontSize='large' sx={{ color: '#858585' }}></NavigateNextIcon>
+                            </Button>
+                        </div>
+                    </div>
+                    <div className='container-info-product-price'>
+                        <h3 className='info-product'>
+                            {cantidad + ' ' + tipo + ' ' + marcas + ' ' + modelos + ' ' + referencia}
+                        </h3>
+                        <div className='division-enviar'>
+                        </div>
+                        <div className='contenedor-price'>
+                            <p className='text-pago'>
+                                pagas
+                            </p>
+                            <p className='text-price'>
+                                {"$" + Number.parseFloat(precio).toFixed(3)}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 

@@ -41,7 +41,7 @@ const Encabezado = (props) => {
     }
 
     const drawer = (
-        <Box sx={{ textAlign: 'center', flexGrow: 1, fontFamily: "sans-serif", }} >
+        <Box sx={{ textAlign: 'center', flexGrow: 1, fontFamily: "sans-serif" }} >
             <Box sx={{ display: 'block', flexGrow: 1, background: '#111' }}>
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <IconButton edge="start"
@@ -203,14 +203,14 @@ const Encabezado = (props) => {
                     </Typography>
                     <form onSubmit={Carrito}>
                         <IconButton type="submit"
-                            sx={{ display: { xs: '-ms-flexbox', mb: 'flex' }, ml: 4 }}
+                            sx={{ display: { xs: '-ms-flexbox', mb: 'flex' }, ml: 6 }}
                             color="inherit" aria-label="menu" size="large">
                             <ShoppingCartIcon fontSize="larger" />
                         </IconButton>
                     </form>
                 </Toolbar>
             </AppBar>
-            <Box>
+            <Box sx={{ mr: 0, p: 0 }}>
                 <SwipeableDrawer
                     variant="temporary"
                     open={mobileOpen}
@@ -220,7 +220,7 @@ const Encabezado = (props) => {
                         keepMounted: true,
                     }}
                     sx={{
-                        '& .MuiDrawer-paper': { width: '91%' },
+                        '& .MuiDrawer-paper': { width: '90%',mr:0},
                     }}
                 >
                     {drawer}
