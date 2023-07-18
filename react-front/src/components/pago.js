@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -68,30 +67,44 @@ const Pago = () => {
                 <p className='title-envio'>¿Como quieres paga?</p>
             </div>
             <div className='container-options-pago'>
-                <div className='contenedor-options botton'>
-                    <div className='texto-options'>
-                        Targeta debito
+                <Button sx={{ color: 'black', height:70 }}>
+                    <div className='contenedor-options'>
+                        <div className='texto-options'>
+                            Targeta debito
+                        </div>
+                        <NavigateNextIcon fontSize='large'></NavigateNextIcon>
                     </div>
-                    <NavigateNextIcon fontSize='large'></NavigateNextIcon>
+                </Button>
+                <div className='separacion'>
                 </div>
-                <div className='contenedor-options botton'>
-                    <div className='texto-options'>
-                        Targeta credito
+                <Button sx={{ color: 'black', height:70 }}>
+                    <div className='contenedor-options '>
+                        <div className='texto-options'>
+                            Targeta credito
+                        </div>
+                        <NavigateNextIcon fontSize='large'></NavigateNextIcon>
                     </div>
-                    <NavigateNextIcon fontSize='large'></NavigateNextIcon>
+                </Button>
+                <div className='separacion'>
                 </div>
-                <div className='contenedor-options'>
-                    <div className='texto-options'>
-                        PSE
+                <Button sx={{ color: 'black', height:70 }}>
+                    <div className='contenedor-options'>
+                        <div className='texto-options'>
+                            PSE
+                        </div>
+                        <NavigateNextIcon fontSize='large'></NavigateNextIcon>
                     </div>
-                    <NavigateNextIcon fontSize='large'></NavigateNextIcon>
+                </Button>
+                <div className='separacion'>
                 </div>
-                <div className='contenedor-options top'>
-                    <div className='texto-options'>
-                        Contra entrega
+                <Button sx={{ color: 'black', height:70 }}>
+                    <div className='contenedor-options'>
+                        <div className='texto-options'>
+                            Contra entrega
+                        </div>
+                        <NavigateNextIcon fontSize='large'></NavigateNextIcon>
                     </div>
-                    <NavigateNextIcon fontSize='large'></NavigateNextIcon>
-                </div>
+                </Button>
             </div>
             <div className='container-info-product-price'>
                 <h3 className='info-product'>

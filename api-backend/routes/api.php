@@ -14,6 +14,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(CarritoController::class)->group(function () {
 Route::post('/cart', 'agregarCarrito');
 Route::get('/cartListar', 'listarCarrito');
+Route::delete('/DeleteCart/{id}', 'delete');
+Route::put('/UpdateCart/{id}/{cantidad}', 'UpdateCarrito');
 });
 
 Route::controller(FiltrosController::class)->group(function () {

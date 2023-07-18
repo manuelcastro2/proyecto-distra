@@ -33,12 +33,25 @@ class CarritoController extends Controller
 
     public function listarCarrito()
     {
-        $carrito= DB::select('select * from carrito');
+        $carrito = DB::select('select * from carrito');
         return $carrito;
     }
 
-    public function delete(string $id){
-        
+    public function delete(string $id)
+    {
+        $delete = DB::table('carrito')->delete($id);
+        return $delete;
+    }
+
+
+    public function UpdateCarrito(string $id, int $cantidad)
+    {
+        $update = DB::table('carrito')->where('id', $id)->update(
+            [
+                'cantidad' => $cantidad,
+            ]
+        );
+        return $update;
     }
 
 

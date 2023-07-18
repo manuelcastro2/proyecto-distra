@@ -290,7 +290,7 @@ const Aceites = () => {
                                                 }}
                                                 onClick={() => {
                                                     setMostrarModelo('modelo')
-                                                    cont1(0)
+                                                    setCont1(0)
                                                     handleCloseModelo()
                                                 }
                                                 }

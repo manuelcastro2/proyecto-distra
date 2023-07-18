@@ -90,7 +90,7 @@ body {
 }
 
 .result {
-    width: 75%;
+    width: 280px;
     height: 142px;
     display: flex;
     justify-content: center;
@@ -113,6 +113,7 @@ body {
 }
 
 .title-result {
+    width: 180px;
     text-decoration: none;
     font-size: 13px;
     font-style: normal;
@@ -128,7 +129,7 @@ body {
 }
 
 .item-referencia {
-    width: 250px;
+    width: 280px;
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -148,7 +149,7 @@ body {
 
 .item-precioGrande {
     color: #000;
-    font-size:22px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
@@ -156,7 +157,7 @@ body {
     text-align: justify;
 }
 
-.item-conversion{
+.item-conversion {
     font-size: 10px;
     font-weight: 400;
     color: #000;
@@ -165,7 +166,7 @@ body {
     text-align: justify;
 }
 
-.item-envio{
+.item-envio {
     font-size: 10px;
     font-weight: 400;
     color: #000;
@@ -174,7 +175,7 @@ body {
     text-align: justify;
 }
 
-.division3{
+.division3 {
     position: relative;
     top: 20px;
 }

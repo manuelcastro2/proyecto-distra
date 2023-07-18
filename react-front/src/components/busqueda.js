@@ -42,34 +42,32 @@ function Busqueda() {
                     <p className="results">{tipo + " " + marcas + " " + modelos}</p>
                 </div>
                 <p className='division'></p>
-                <div>
-                    {referen.map((item) => (
-                        <Link to={`/referencia/${tipo}/${marcas}/${modelos}/${item.referencia}`} className="direccion">
-                            <Button className="container-result">
-                                <div className="result">
-                                    <div className="img-result">
-                                        <div className="img"></div>
-                                    </div>
-                                    <div className="item-referencia">
-                                        <h3 key={item.referencia}
-                                            className="title-result">
-                                            {tipo + " " + marcas + " " + modelos + " " + item.referencia}
-                                        </h3>
-                                        <div className="division3">
-                                            <p className="item-precio">{"$" + Number.parseFloat(item.precio).toFixed(3)}</p>
-                                            <p className="item-precioGrande">{"$" + Number.parseFloat(item.precio).toFixed(3)}</p>
-                                            <p className="item-conversion">
-                                                10.000 km de duracción
-                                            </p>
-                                            <p className="item-envio">Envio gratis</p>
-                                        </div>
+                {referen.map((item) => (
+                    <Link to={`/referencia/${tipo}/${marcas}/${modelos}/${item.referencia}`} className="direccion">
+                        <Button className="container-result">
+                            <div className="result">
+                                <div className="img-result">
+                                    <div className="img"></div>
+                                </div>
+                                <div className="item-referencia">
+                                    <h3 key={item.referencia}
+                                        className="title-result">
+                                        {tipo + " " + marcas + " " + modelos + " " + item.referencia}
+                                    </h3>
+                                    <div className="division3">
+                                        <p className="item-precio">{"$" + Number.parseFloat(item.precio).toFixed(3)}</p>
+                                        <p className="item-precioGrande">{"$" + Number.parseFloat(item.precio).toFixed(3)}</p>
+                                        <p className="item-conversion">
+                                            10.000 km de duracción
+                                        </p>
+                                        <p className="item-envio">Envio gratis</p>
                                     </div>
                                 </div>
-                                <p className='division2'></p>
-                            </Button>
-                        </Link>
-                    ))}
-                </div>
+                            </div>
+                            <p className='division2'></p>
+                        </Button>
+                    </Link>
+                ))}
             </div>
         );
     } else {

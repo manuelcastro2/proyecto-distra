@@ -21,6 +21,7 @@ const Domicilio = () => {
     const [direccion, setDireccion] = useState('')
     const [refernciasAdicional, setRefernciasAdicional] = useState('')
     const [telefono, setTelefono] = useState('')
+    const [ano, setAno] = useState('')
     const [cont, setCont] = useState(1)
 
     const [openDepartamentos, setOpenDepartamentos] = useState(false);
@@ -49,12 +50,14 @@ const Domicilio = () => {
                     setDireccion(state.datos.direccion);
                     setRefernciasAdicional(state.datos.refernciasAdicional);
                     setTelefono(state.datos.telefono);
+                    setAno(state.datos.ano)
+                    console.log(state);
                     if (departamento == undefined && Municipio == undefined) {
                         setDepartamento('Departamentos');
                         setMunicipio('Municipios');
-                    } else if(departamento == 'Departamentos' && Municipio == 'Municipios'){
+                    } else if (departamento == 'Departamentos' && Municipio == 'Municipios') {
 
-                    }else {
+                    } else {
                         setDepartamento(state.datos.departamentos);
                         setMunicipio(state.datos.municipios);
                     }
@@ -70,24 +73,46 @@ const Domicilio = () => {
     })
 
     const datos = () => {
-        navigate('/envio', {
-            state: {
-                datos: {
-                    tipo: tipo,
-                    marcas: marcas,
-                    modelos: modelos,
-                    referencia: referencia,
-                    cantidad: cantidad,
-                    precio: precio,
-                    nombre: nombre,
-                    departamentos: departamento,
-                    municipios: Municipio,
-                    direccion: direccion,
-                    refernciasAdicional: refernciasAdicional,
-                    telefono: telefono
+        if (nombre == undefined
+            && departamento == 'Departamentos'
+            && Municipio == 'Municipios'
+            && direccion == undefined
+            && refernciasAdicional == undefined
+            && telefono == undefined) {
+            navigate('/envio', {
+                state: {
+                    datos: {
+                        tipo: tipo,
+                        marcas: marcas,
+                        modelos: modelos,
+                        referencia: referencia,
+                        cantidad: cantidad,
+                        precio: precio,
+                        ano: ano
+                    }
                 }
-            }
-        })
+            })
+        } else {
+            navigate('/envio', {
+                state: {
+                    datos: {
+                        tipo: tipo,
+                        marcas: marcas,
+                        modelos: modelos,
+                        referencia: referencia,
+                        cantidad: cantidad,
+                        precio: precio,
+                        nombre: nombre,
+                        departamentos: departamento,
+                        municipios: Municipio,
+                        direccion: direccion,
+                        refernciasAdicional: refernciasAdicional,
+                        telefono: telefono,
+                        ano: ano,
+                    }
+                }
+            })
+        }
     }
 
     const theme = createTheme({

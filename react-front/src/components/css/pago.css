@@ -4,16 +4,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 94px;
+    top: 100px;
     width: 302px;
     height: 310px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     background-color: #EEF1FD;
+    gap: 2px;
 }
 
 .contenedor-options {
     width: 302px;
-    height: 70px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -21,19 +21,18 @@
 }
 
 .texto-options {
-    width: 100px;
+    width: 150px;
     height: 20px;
     font-size: 14px;
     font-style: normal;
     font-weight: 300;
     line-height: 20px;
     letter-spacing: 0.1px;
+    text-transform: capitalize;
 }
 
-.botton{
-    border-bottom: 1px solid #7A757F;
-}
-
-.top{
-    border-top: 1px solid #7A757F;
+.separacion{
+    width: 302px;
+    min-height:1px ;
+    background: #7A757F;
 }

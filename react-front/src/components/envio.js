@@ -35,7 +35,6 @@ const Envio = () => {
         setRefernciasAdicional(state.datos.refernciasAdicional);
         setTelefono(state.datos.telefono);
         setAno(state.datos.ano)
-        console.log(state);
     })
 
     const navigate = useNavigate();
@@ -50,6 +49,7 @@ const Envio = () => {
                     referencia: referencia,
                     cantidad: cantidad,
                     precio: precio,
+                    ano:ano,
                 }
             }
         })
@@ -71,6 +71,7 @@ const Envio = () => {
                     direccion: direccion,
                     refernciasAdicional: refernciasAdicional,
                     telefono: telefono,
+                    ano:ano,
                 }
             }
         })
